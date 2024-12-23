@@ -7,7 +7,7 @@ Unfortunately I have not found on the Internet a convenient launcher for Duke Nu
 ![1](https://github.com/user-attachments/assets/de6ad51c-bc76-4a51-a1f6-1b5fb25c7957)
 
 **How to install**
-1) Download the latest release and extract the archive into the eduke32 folder.
+1) Download the latest [release](https://github.com/dragxnd/DukeBlaze_Launcher/releases/tag/WinRelease) and extract the archive into the eduke32 folder.
 2) Run DukeBlazeLauncher.exe and make sure you select the correct version of eduke32.exe in the Settings menu
 3) Press RUN button to play
 
