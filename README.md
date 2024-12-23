@@ -46,10 +46,10 @@ Unfortunately I have not found on the Internet a convenient launcher for Duke Nu
 
 **Where I can find my preset library**
 
-_\LauncherData\Description.dat_
+\LauncherData\Description.dat
 
-_\LauncherData\Presets.dat
+\LauncherData\Presets.dat
 
 \LauncherData\PresetsSettings.dat
 
-\LauncherData\Settings.dat_
+\LauncherData\Settings.dat
