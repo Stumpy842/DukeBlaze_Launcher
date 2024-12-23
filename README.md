@@ -52,4 +52,7 @@ Unfortunately I have not found on the Internet a convenient launcher for Duke Nu
 
 \LauncherData\PresetsSettings.dat
 
+
+**Important! The additional content must be in the folder with the Launcher. I don't know why, but eDuke only works with relative paths**
+
 \LauncherData\Settings.dat
