@@ -14,12 +14,14 @@ Unfortunately I have not found on the Internet a convenient launcher for Duke Nu
 **How to run a map/grp/con/def/zip**
 1) Drag and drop the file into the Files field
 2) Press RUN button to play
+
 ![2](https://github.com/user-attachments/assets/a215d824-cda9-4160-9373-d77f63b0fa46)
 
 **How to make grp/con/def file as main** (-grp/-gamegrp, -h/-mh, -x/-mx) 
 1) Drag and drop the file into the Files field
 2) Select grp/con/def file
 3) Under the Files field, you will now see the "Replace Main" checkbox. Tick it if you want to
+
 ![3](https://github.com/user-attachments/assets/8a36473b-a4db-4155-9699-23f76d9cae6f)
 
 **How to save preset to your collection**
@@ -43,7 +45,11 @@ Unfortunately I have not found on the Internet a convenient launcher for Duke Nu
 1) Select "Custom eDuke32.exe" in the Additional Parameters field
 
 **Where I can find my preset library**
+
 _\LauncherData\Description.dat_
+
 _\LauncherData\Presets.dat
+
 \LauncherData\PresetsSettings.dat
+
 \LauncherData\Settings.dat_
