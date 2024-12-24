@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace DragDukeLauncher
 {
@@ -19,7 +19,9 @@ namespace DragDukeLauncher
         {
             get
             {
-                if (!String.IsNullOrEmpty(_mainWindow.GameDirTextBox.Text)) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.game_dir].CommandName} {_mainWindow.GameDirTextBox.Text} ";
+                string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string dir = exeDirectory + _mainWindow.GameDirTextBox.Text;
+                if (!String.IsNullOrEmpty(_mainWindow.GameDirTextBox.Text)) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.game_dir].CommandName} {dir} ";
                 return String.Empty;
             }
         }
@@ -43,7 +45,9 @@ namespace DragDukeLauncher
         {
             get
             {
-                if (!String.IsNullOrEmpty(_mainWindow.CfgPathTextBox.Text)) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.cfg].CommandName} {_mainWindow.CfgPathTextBox.Text} ";
+                string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string dir = exeDirectory + _mainWindow.CfgPathTextBox.Text;
+                if (!String.IsNullOrEmpty(_mainWindow.CfgPathTextBox.Text)) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.cfg].CommandName} {dir} ";
                 return String.Empty;
             }
         }
