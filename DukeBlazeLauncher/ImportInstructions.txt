@@ -1,0 +1,7 @@
+This window allows you to bulk import map files (*.map) to the Maps folder in |title|.
+
+Click the Add File(s) button to select one or multiple map files, or drag and drop map files onto the List to add them. Remove files by selecting them and clicking the Remove File(s) button.
+
+Enter a name in the Folder Name textbox above, and click the Import button. Click the Done button to close this window.
+
+Parameters applied to each map will be those selected in the main window before the Import window is opened. After import you can move presets and change parameters as you like.
