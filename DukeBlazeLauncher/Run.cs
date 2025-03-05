@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace DragDukeLauncher
 {
-    public static class Run
+    internal static class Run
     {
 
         private static RichTextBox _customCommandsBox = null;
 
 
-        public static void Init(RichTextBox customCommandsBox)
+        internal static void Init(RichTextBox customCommandsBox)
         {
             _customCommandsBox = customCommandsBox;
         }
 
 
-        public static void RunGame()
+        internal static void RunGame()
         {
             Console.WriteLine(GetCommands());
 
@@ -32,7 +32,8 @@ namespace DragDukeLauncher
                 {
                     if (AdditionalParameters.CustomExe.Contains(@":\"))
                     {
-                        string fileName = AdditionalParameters.CustomExe.ToString().Split('\\').Last();              
+                        //string fileName = AdditionalParameters.CustomExe.ToString().Split('\\').Last();
+                        string fileName = AdditionalParameters.CustomExe.Split('\\').Last();
                         string folderPath = AdditionalParameters.CustomExe.Replace(fileName, "");
                         string absolutePath = folderPath + fileName;
 
@@ -46,7 +47,8 @@ namespace DragDukeLauncher
                     }
                     else
                     {
-                        string fileName = AdditionalParameters.CustomExe.ToString().Split('\\').Last();
+                        //string fileName = AdditionalParameters.CustomExe.ToString().Split('\\').Last();
+                        string fileName = AdditionalParameters.CustomExe.Split('\\').Last();
                         string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
                         string absolutePath = exeDirectory + AdditionalParameters.CustomExe;
                         string folderPath = absolutePath.Replace(fileName, "");
@@ -74,12 +76,12 @@ namespace DragDukeLauncher
         }
 
 
-        public static void ExeNotFoundErrorShow()
+        internal static void ExeNotFoundErrorShow()
         {
             var dialogResult = MessageBox.Show($"eduke32.exe not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             if (dialogResult == DialogResult.OK)
             {
-                SettingsWindow settingsWindow = new SettingsWindow();
+                using SettingsWindow settingsWindow = new SettingsWindow() { KeyPreview = true };
                 settingsWindow.ShowDialog();
             }
         }

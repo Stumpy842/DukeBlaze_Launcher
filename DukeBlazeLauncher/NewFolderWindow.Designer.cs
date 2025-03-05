@@ -18,59 +18,86 @@
 
         private void InitializeComponent()
         {
-            this.NewFolderNameTextBox = new System.Windows.Forms.TextBox();
-            this.CreateFolderButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewFolderWindow));
+            NewFolderNameTextBox = new TextBox();
+            CancelFolderButton = new Button();
+            label1 = new Label();
+            CreateFolderButton = new Button();
+            SuspendLayout();
             // 
             // NewFolderNameTextBox
             // 
-            this.NewFolderNameTextBox.Location = new System.Drawing.Point(12, 30);
-            this.NewFolderNameTextBox.Name = "NewFolderNameTextBox";
-            this.NewFolderNameTextBox.Size = new System.Drawing.Size(350, 20);
-            this.NewFolderNameTextBox.TabIndex = 0;
+            NewFolderNameTextBox.Location = new Point(14, 35);
+            NewFolderNameTextBox.Margin = new Padding(4, 3, 4, 3);
+            NewFolderNameTextBox.Name = "NewFolderNameTextBox";
+            NewFolderNameTextBox.Size = new Size(408, 23);
+            NewFolderNameTextBox.TabIndex = 1;
+            NewFolderNameTextBox.TextChanged += NewFolderNameTextBox_TextChanged;
             // 
-            // CreateFolderButton
+            // CancelFolderButton
             // 
-            this.CreateFolderButton.Location = new System.Drawing.Point(274, 59);
-            this.CreateFolderButton.Name = "CreateFolderButton";
-            this.CreateFolderButton.Size = new System.Drawing.Size(88, 23);
-            this.CreateFolderButton.TabIndex = 1;
-            this.CreateFolderButton.Text = "Create";
-            this.CreateFolderButton.UseVisualStyleBackColor = true;
-            this.CreateFolderButton.Click += new System.EventHandler(this.CreateFolderButton_Click);
+            CancelFolderButton.Location = new Point(334, 69);
+            CancelFolderButton.Margin = new Padding(4, 3, 4, 3);
+            CancelFolderButton.Name = "CancelFolderButton";
+            CancelFolderButton.Size = new Size(88, 27);
+            CancelFolderButton.TabIndex = 3;
+            CancelFolderButton.Text = "Cancel";
+            CancelFolderButton.UseVisualStyleBackColor = true;
+            CancelFolderButton.Click += CancelFolderButton_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Name";
+            label1.AutoSize = true;
+            label1.Location = new Point(14, 13);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Name";
+            // 
+            // CreateFolderButton
+            // 
+            CreateFolderButton.Enabled = false;
+            CreateFolderButton.Location = new Point(238, 69);
+            CreateFolderButton.Margin = new Padding(4, 3, 4, 3);
+            CreateFolderButton.Name = "CreateFolderButton";
+            CreateFolderButton.Size = new Size(88, 27);
+            CreateFolderButton.TabIndex = 2;
+            CreateFolderButton.Text = "&Create";
+            CreateFolderButton.UseVisualStyleBackColor = true;
+            CreateFolderButton.Click += CreateFolderButton_Click;
             // 
             // NewFolderWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 94);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.CreateFolderButton);
-            this.Controls.Add(this.NewFolderNameTextBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(391, 133);
-            this.MinimumSize = new System.Drawing.Size(391, 133);
-            this.Name = "NewFolderWindow";
-            this.Text = "Folder Name";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AcceptButton = CreateFolderButton;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(438, 108);
+            Controls.Add(label1);
+            Controls.Add(CreateFolderButton);
+            Controls.Add(CancelFolderButton);
+            Controls.Add(NewFolderNameTextBox);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MaximumSize = new Size(454, 147);
+            MinimizeBox = false;
+            MinimumSize = new Size(454, 147);
+            Name = "NewFolderWindow";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Folder Name";
+            KeyDown += NewFolderWindow_KeyDown;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.TextBox NewFolderNameTextBox;
-        private System.Windows.Forms.Button CreateFolderButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button CancelFolderButton;
+        private Button CreateFolderButton;
     }
 }

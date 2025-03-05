@@ -56,3 +56,27 @@ Unfortunately I have not found on the Internet a convenient launcher for Duke Nu
 
 
 **Important! The additional content must be in the folder with the Launcher. I don't know why, but eDuke only works with relative paths**
+
+
+********** New Version Release - Fork of original **********
+
+This new release has all the functionality of the original and adds several new features and enhancements.
+
+** Accelerator Keys for most functions **
+Mnemonic keys are added for all the fields in the main window as well as many of the dialog windows. They work by holding the Alt key while pressing the Accelerator key, just as in most Windows programs.
+
+** Menu Bar with new features **
+A menu has been added which features numerous items not previously available. The most notable of these are Load and Save Presets, an enhanced Settings window with lots of additional options, and the ability to prune or sort the preset tree.
+
+** Import Maps feature **
+Found under the Tools menu is Import Maps which will allow you to bulk import map files to the presets tree.
+
+** Reload Original Presets **
+This menu option will reset the tree to the default, restoring the tree to an empty state.
+
+** Color in Preset Tree **
+In the Settings window you can choose to use color to highlight the nodes of the preset tree which will allow you to easily see the path to any item in the tree.
+
+** Features which are currently not implemented **
+Language support
+Dark mode

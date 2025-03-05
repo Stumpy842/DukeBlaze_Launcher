@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -10,17 +11,44 @@ namespace DragDukeLauncher
 {
     public static class PresetsManager
     {
-
-        private const string PresetsSavePath = "LauncherData\\Presets.dat";
-        private const string PresetsSettingsSavePath = "LauncherData\\PresetsSettings.dat";
+        //        private const string PresetsSavePath = "LauncherData\\Presets.dat";
+        //        private const string PresetsSettingsSavePath = "LauncherData\\PresetsSettings.dat";
+        private const string PresetsSavePath = $@"{Tools.ldFolder}\{Tools.dPre}";
+        private const string PresetsSettingsSavePath = $@"{Tools.ldFolder}\{Tools.dPset}";
 
         private static TreeView _presetTree = null;
         private static MainWindow _mainWindow = null;
-        private static List<PresetItem> PresetSettings = new List<PresetItem>();
+        private static List<PresetItem> PresetSettings = [];
         public static bool IsPresetSelected { get; set; } = false;
         public static int LastNodeId { get; private set; } = 2;
 
+        public static void CreateFiles(bool force = false)
+        {
+            // Since the Presets, PresetsSettings and Description files must stay in sync,
+            //      if any files are missing just replace them all with the defaults
+            // Steve - 01/29/2025 22:36:26
+            try
+            {
+                if (force || !File.Exists(PresetsSavePath) || !File.Exists(PresetsSettingsSavePath) ||
+            !File.Exists(DescriptionManager.DescriptionFilePath))
+                {
+                    string def = "[{\"Text\":\"📁 Expansions\",\"Tag\":\"0\",\"Children\":[]},{\"Text\":\"📁 Episodes\",\"Tag\":\"1\",\"Children\":[]},{\"Text\":\"📁 Maps\",\"Tag\":\"2\",\"Children\":[]}]";
+                    File.WriteAllText(Tools.GetRelativePath(PresetsSavePath), def);
+                    File.WriteAllText(Tools.GetRelativePath(PresetsSettingsSavePath), "[]");
+                    File.WriteAllText(Tools.GetRelativePath(DescriptionManager.DescriptionFilePath), "[]");
+                    //if (!force) Debug.WriteLine("***One of the Presets files was missing, replacing all with defaults");
+                    Tools.WriteWarningFile();  // May as well replace the warning file also
+                }
 
+            }
+            catch (Exception ex)
+            {
+                using (new CenterWinDialog(_mainWindow))
+                {
+                    MessageBox.Show(MainWindow.MyTitle, $"Error Saving Files\n{ex}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         public static int GetNewId()
         {
@@ -31,19 +59,18 @@ namespace DragDukeLauncher
         private static int GetLastIdFromSave()
         {
             int id = 0;
+            int tag;
             var allNodes = TreeViewTools.Collect(_presetTree.Nodes);
             foreach (var node in allNodes)
             {
-                if (node.Tag != null)
+                if (node.Tag is not null)
                 {
-                    int tag = Int32.Parse(node.Tag.ToString());
+                    tag = (int)node.Tag;
                     if (tag > id) id = tag;
                 }
             }
             return id;
         }
-
-
 
         public static void Init(TreeView presetTree, MainWindow mainWindow)
         {
@@ -73,7 +100,7 @@ namespace DragDukeLauncher
             var allNodes = TreeViewTools.Collect(_presetTree.Nodes);
             foreach (var node in allNodes)
             {
-                if (node.Tag.ToString() == nodeId.ToString()) return exist;
+                if ((int)node.Tag == nodeId) return exist;
             }
             return exist;
         }
@@ -81,11 +108,11 @@ namespace DragDukeLauncher
 
         public static TreeNode GetPresetByNodeId(int nodeId)
         {
-            if (IsPresetExist(nodeId) == false) return null;
+            if (!IsPresetExist(nodeId)) return null;
             var allNodes = TreeViewTools.Collect(_presetTree.Nodes);
             foreach (var node in allNodes)
             {
-                if (node.Tag.ToString() == nodeId.ToString()) return node;
+                if ((int)node.Tag == nodeId) return node;
             }
             return null;
         }
@@ -93,27 +120,29 @@ namespace DragDukeLauncher
 
         public static PresetItem GetCurrentPresetSettings()
         {
-            PresetItem item = new PresetItem();
-            item.NodeId = int.Parse(_presetTree.SelectedNode.Tag.ToString());
-            item.Files = ListFiles.Files;
-            item.GameDirectoryPath = AdditionalParameters.GameDirectory;
-            item.ConfigPath = AdditionalParameters.ConfigPath;
-            item.SkillLevel = AdditionalParameters.Skill;
-            item.Addon = AdditionalParameters.Addon;
-            item.RespawnMode = AdditionalParameters.RespawnMode;
-            item.DisableStartup = AdditionalParameters.DisableStartupWindow;
-            item.DisableMonsters = AdditionalParameters.DisableMonstersWindow;
-            item.DisableLogo = AdditionalParameters.DisableStartupAnimationsAndLogos;
-            item.AdditionalCommands = _mainWindow.AdditionalCommandsTextBox.Text;
-            item.CustomExePath = AdditionalParameters.CustomExe;
+            PresetItem item = new()
+            {
+                NodeId = (int)_presetTree.SelectedNode.Tag,
+                Files = ListFiles.Files,
+                GameDirectoryPath = AdditionalParameters.GameDirectory,
+                ConfigPath = AdditionalParameters.ConfigPath,
+                SkillLevel = AdditionalParameters.Skill,
+                Addon = AdditionalParameters.Addon,
+                RespawnMode = AdditionalParameters.RespawnMode,
+                DisableStartup = AdditionalParameters.DisableStartupWindow,
+                DisableMonsters = AdditionalParameters.DisableMonstersWindow,
+                DisableLogo = AdditionalParameters.DisableStartupAnimationsAndLogos,
+                AdditionalCommands = _mainWindow.AdditionalCommandsTextBox.Text,
+                CustomExePath = AdditionalParameters.CustomExe
+            };
             return item;
         }
 
 
         public static void SetCurrentPresetSettings()
         {
-            var item = PresetSettings.Find(x => x.NodeId.ToString() == _presetTree.SelectedNode.Tag.ToString());
-            if (item != null)
+            var item = PresetSettings.Find(x => x.NodeId == (int)_presetTree.SelectedNode.Tag);
+            if (item is not null)
             {
                 ListFiles.Clear();
                 foreach (var file in item.Files)
@@ -144,7 +173,7 @@ namespace DragDukeLauncher
 
             for (int i = 0; i < PresetSettings.Count; i++)
             {
-                if (PresetSettings[i].NodeId.ToString() == _presetTree.SelectedNode.Tag.ToString())
+                if (PresetSettings[i].NodeId == (int)_presetTree.SelectedNode.Tag)
                 {
                     PresetSettings[i] = GetCurrentPresetSettings();
                     found = true;
@@ -161,7 +190,7 @@ namespace DragDukeLauncher
             LoadPresetSettingsFromFile();
             for (int i = 0; i < PresetSettings.Count; i++)
             {
-                if(PresetSettings[i].NodeId.ToString() == nodeId.ToString())
+                if(PresetSettings[i].NodeId == nodeId)
                 {
                     PresetSettings.RemoveAt(i);
                     break;
@@ -173,7 +202,7 @@ namespace DragDukeLauncher
 
         private static void SavePresetSettingsToFile()
         {
-            if (File.Exists(PresetsSettingsSavePath) == false) File.WriteAllText(PresetsSettingsSavePath, String.Empty);
+            if (!File.Exists(PresetsSettingsSavePath)) File.WriteAllText(PresetsSettingsSavePath, String.Empty);
             string savedText = JsonConvert.SerializeObject(PresetSettings);
             File.WriteAllText(PresetsSettingsSavePath, savedText);
         }
@@ -181,15 +210,12 @@ namespace DragDukeLauncher
 
         private static void LoadPresetSettingsFromFile()
         {
-            if (File.Exists(PresetsSettingsSavePath) == false) File.WriteAllText(PresetsSettingsSavePath, String.Empty);
+            if (!File.Exists(PresetsSettingsSavePath)) File.WriteAllText(PresetsSettingsSavePath, String.Empty);
             var fileText = File.ReadAllText(PresetsSettingsSavePath);
             var newItems = JsonConvert.DeserializeObject<List<PresetItem>>(fileText);
-            if (newItems != null) PresetSettings = newItems;
+            if (newItems is not null) PresetSettings = newItems;
         }
-
     }
-
-
 
     [Serializable]
     public class PresetItem

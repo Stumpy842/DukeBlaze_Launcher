@@ -12,5 +12,32 @@
   </PropertyGroup>
   <PropertyGroup>
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
+    <_LastSelectedProfileId>C:\Users\Steve\source\repos\DukeBlaze_Launcher-fork\DukeBlazeLauncher\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="AboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DescriptionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ImportMapsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="InputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="NewFolderWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SettingsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SpringLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

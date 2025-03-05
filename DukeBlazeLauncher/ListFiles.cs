@@ -9,18 +9,15 @@ namespace DragDukeLauncher
 {
     public static class ListFiles
     {
-
-        public static List<UploadedFile> Files { get; set; } = new List<UploadedFile>();
+        public static List<UploadedFile> Files { get; set; } = [];
         private static ListBox _listBox;
         private static Form _form;
-
 
         public static void Init(ListBox listBox, Form Form)
         {
             _listBox = listBox;
             _form = Form;
         }
-
 
         public static void AddFile(string filePath)
         {
@@ -34,13 +31,11 @@ namespace DragDukeLauncher
             Files.Add(new UploadedFile(Tools.GetRelativePath(filePath), loadAsMain));
         }
 
-
         public static void RemoveFile()
         {
             if (_listBox.SelectedIndex == -1) return;
             Files.RemoveAt(_listBox.SelectedIndex);
         }
-
 
         public static void MoveUp()
         {
@@ -60,7 +55,6 @@ namespace DragDukeLauncher
                 }
             }
         }
-
 
         public static void MoveDown()
         {
@@ -91,18 +85,15 @@ namespace DragDukeLauncher
             Files[_listBox.SelectedIndex].LoadAsMain = active;
         }
 
-
         public static void Refresh(bool saveSelection = false)
         {
             int oldSelectedIndex = _listBox.SelectedIndex;
             _listBox.Items.Clear();
-
             for (int i = 0; i < Files.Count; i++)
             {
                 _listBox.Items.Add(Path.GetFileName(Files[i].FilePath));
             }
-
-            if(saveSelection) if(oldSelectedIndex< Files.Count)  _listBox.SelectedIndex = oldSelectedIndex;
+            if (saveSelection && oldSelectedIndex < Files.Count)  _listBox.SelectedIndex = oldSelectedIndex;
         }
 
         public static void ClearSelection()
@@ -151,7 +142,7 @@ namespace DragDukeLauncher
 
         public string GetExtension()
         {
-            return FilePath.ToString().Split('.').Last();
+            return FilePath.Split('.').Last();
         }
 
         public string GetRunString()
@@ -164,8 +155,5 @@ namespace DragDukeLauncher
         {
             return FilePath.Replace(AppDomain.CurrentDomain.BaseDirectory, String.Empty); 
         }
-
     }
-
-
 }

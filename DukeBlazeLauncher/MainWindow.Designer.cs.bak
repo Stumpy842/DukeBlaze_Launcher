@@ -89,7 +89,6 @@ namespace DragDukeLauncher
             sortToolStripMenuItem = new ToolStripMenuItem();
             entireTreeToolStripMenuItem = new ToolStripMenuItem();
             selectedNodeToolStripMenuItem = new ToolStripMenuItem();
-            selectedFolderSubfoldersToolStripMenuItem = new ToolStripMenuItem();
             toolsToolStripMenuItem = new ToolStripMenuItem();
             cfgFilesToolStripMenuItem = new ToolStripMenuItem();
             autoexeccfgToolStripMenuItem = new ToolStripMenuItem();
@@ -102,8 +101,6 @@ namespace DragDukeLauncher
             StatusStrip = new StatusStrip();
             TreeStatusLabel = new ToolStripStatusLabel();
             CollisionsStatusLabel = new ToolStripStatusLabel();
-            ExePathStatusLabel = new SpringLabel();
-            importMapsToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             LaunchOptionsGroup.SuspendLayout();
@@ -176,7 +173,7 @@ namespace DragDukeLauncher
             flowLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(290, 58);
-            flowLayoutPanel1.TabIndex = 3;
+            flowLayoutPanel1.TabIndex = 13;
             // 
             // NewPresetFolderButton
             // 
@@ -267,7 +264,7 @@ namespace DragDukeLauncher
             LaunchOptionsGroup.Name = "LaunchOptionsGroup";
             LaunchOptionsGroup.Padding = new Padding(4, 3, 4, 3);
             LaunchOptionsGroup.Size = new Size(799, 471);
-            LaunchOptionsGroup.TabIndex = 2;
+            LaunchOptionsGroup.TabIndex = 3;
             LaunchOptionsGroup.TabStop = false;
             // 
             // BrowseButton
@@ -277,7 +274,7 @@ namespace DragDukeLauncher
             BrowseButton.Margin = new Padding(4, 3, 4, 3);
             BrowseButton.Name = "BrowseButton";
             BrowseButton.Size = new Size(27, 39);
-            BrowseButton.TabIndex = 6;
+            BrowseButton.TabIndex = 5;
             BrowseButton.Text = "⁝";
             toolTip1.SetToolTip(BrowseButton, "Open file browser");
             BrowseButton.UseVisualStyleBackColor = true;
@@ -319,7 +316,7 @@ namespace DragDukeLauncher
             AdditionalSettingsPanel.Margin = new Padding(4, 3, 4, 3);
             AdditionalSettingsPanel.Name = "AdditionalSettingsPanel";
             AdditionalSettingsPanel.Size = new Size(442, 442);
-            AdditionalSettingsPanel.TabIndex = 8;
+            AdditionalSettingsPanel.TabIndex = 2;
             AdditionalSettingsPanel.WrapContents = false;
             // 
             // label3
@@ -516,7 +513,7 @@ namespace DragDukeLauncher
             ButtonRemoveFile.Margin = new Padding(4, 3, 4, 3);
             ButtonRemoveFile.Name = "ButtonRemoveFile";
             ButtonRemoveFile.Size = new Size(27, 39);
-            ButtonRemoveFile.TabIndex = 5;
+            ButtonRemoveFile.TabIndex = 4;
             ButtonRemoveFile.Text = "x";
             toolTip1.SetToolTip(ButtonRemoveFile, "Remove item");
             ButtonRemoveFile.UseVisualStyleBackColor = true;
@@ -529,7 +526,7 @@ namespace DragDukeLauncher
             MoveDownButton.Margin = new Padding(4, 3, 4, 3);
             MoveDownButton.Name = "MoveDownButton";
             MoveDownButton.Size = new Size(27, 39);
-            MoveDownButton.TabIndex = 4;
+            MoveDownButton.TabIndex = 3;
             MoveDownButton.Text = "⬇";
             toolTip1.SetToolTip(MoveDownButton, "Move item down");
             MoveDownButton.UseVisualStyleBackColor = true;
@@ -542,7 +539,7 @@ namespace DragDukeLauncher
             MoveUpButton.Margin = new Padding(4, 3, 4, 3);
             MoveUpButton.Name = "MoveUpButton";
             MoveUpButton.Size = new Size(27, 39);
-            MoveUpButton.TabIndex = 3;
+            MoveUpButton.TabIndex = 2;
             MoveUpButton.Text = "⬆";
             toolTip1.SetToolTip(MoveUpButton, "Move item up");
             MoveUpButton.UseVisualStyleBackColor = true;
@@ -556,7 +553,7 @@ namespace DragDukeLauncher
             GroupAdditionalParams.Name = "GroupAdditionalParams";
             GroupAdditionalParams.Padding = new Padding(4, 3, 4, 3);
             GroupAdditionalParams.Size = new Size(290, 153);
-            GroupAdditionalParams.TabIndex = 2;
+            GroupAdditionalParams.TabIndex = 6;
             GroupAdditionalParams.TabStop = false;
             GroupAdditionalParams.Text = "DEFINITION.DEF";
             // 
@@ -583,8 +580,6 @@ namespace DragDukeLauncher
             ListBoxFiles.Size = new Size(290, 276);
             ListBoxFiles.TabIndex = 1;
             toolTip1.SetToolTip(ListBoxFiles, "Drag and drop files here to add");
-            ListBoxFiles.DoubleClick += ListBoxFiles_DoubleClick;
-            ListBoxFiles.Enter += ListBoxFiles_Enter;
             ListBoxFiles.KeyDown += ListBoxFiles_KeyDown;
             // 
             // label1
@@ -625,7 +620,7 @@ namespace DragDukeLauncher
             ArgsGroup.Name = "ArgsGroup";
             ArgsGroup.Padding = new Padding(4, 3, 4, 3);
             ArgsGroup.Size = new Size(799, 200);
-            ArgsGroup.TabIndex = 3;
+            ArgsGroup.TabIndex = 2;
             ArgsGroup.TabStop = false;
             // 
             // lbLoadSavePath
@@ -736,28 +731,28 @@ namespace DragDukeLauncher
             // loadPresetsToolStripMenuItem
             // 
             loadPresetsToolStripMenuItem.Name = "loadPresetsToolStripMenuItem";
-            loadPresetsToolStripMenuItem.Size = new Size(180, 22);
+            loadPresetsToolStripMenuItem.Size = new Size(140, 22);
             loadPresetsToolStripMenuItem.Text = "&Load Presets";
             loadPresetsToolStripMenuItem.Click += loadPresetsToolStripMenuItem_Click;
             // 
             // savePresetsToolStripMenuItem
             // 
             savePresetsToolStripMenuItem.Name = "savePresetsToolStripMenuItem";
-            savePresetsToolStripMenuItem.Size = new Size(180, 22);
+            savePresetsToolStripMenuItem.Size = new Size(140, 22);
             savePresetsToolStripMenuItem.Text = "&Save Presets";
             savePresetsToolStripMenuItem.Click += savePresetsToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(180, 22);
+            settingsToolStripMenuItem.Size = new Size(140, 22);
             settingsToolStripMenuItem.Text = "S&ettings";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(140, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -777,7 +772,7 @@ namespace DragDukeLauncher
             // 
             // sortToolStripMenuItem
             // 
-            sortToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { entireTreeToolStripMenuItem, selectedNodeToolStripMenuItem, selectedFolderSubfoldersToolStripMenuItem });
+            sortToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { entireTreeToolStripMenuItem, selectedNodeToolStripMenuItem });
             sortToolStripMenuItem.Name = "sortToolStripMenuItem";
             sortToolStripMenuItem.Size = new Size(164, 22);
             sortToolStripMenuItem.Text = "&Sort";
@@ -785,27 +780,19 @@ namespace DragDukeLauncher
             // entireTreeToolStripMenuItem
             // 
             entireTreeToolStripMenuItem.Name = "entireTreeToolStripMenuItem";
-            entireTreeToolStripMenuItem.Size = new Size(226, 22);
+            entireTreeToolStripMenuItem.Size = new Size(150, 22);
             entireTreeToolStripMenuItem.Text = "Entire &Tree";
             entireTreeToolStripMenuItem.Click += entireTreeToolStripMenuItem_Click;
             // 
             // selectedNodeToolStripMenuItem
             // 
             selectedNodeToolStripMenuItem.Name = "selectedNodeToolStripMenuItem";
-            selectedNodeToolStripMenuItem.Size = new Size(226, 22);
-            selectedNodeToolStripMenuItem.Text = "Selected &Folder";
-            selectedNodeToolStripMenuItem.Click += selectedNodeToolStripMenuItem_Click;
-            // 
-            // selectedFolderSubfoldersToolStripMenuItem
-            // 
-            selectedFolderSubfoldersToolStripMenuItem.Name = "selectedFolderSubfoldersToolStripMenuItem";
-            selectedFolderSubfoldersToolStripMenuItem.Size = new Size(226, 22);
-            selectedFolderSubfoldersToolStripMenuItem.Text = "Selected Folder && &Subfolders";
-            selectedFolderSubfoldersToolStripMenuItem.Click += selectedFolderSubfoldersToolStripMenuItem_Click;
+            selectedNodeToolStripMenuItem.Size = new Size(150, 22);
+            selectedNodeToolStripMenuItem.Text = "Selected &Node";
             // 
             // toolsToolStripMenuItem
             // 
-            toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cfgFilesToolStripMenuItem, reloadOriginalPresetsToolStripMenuItem, importMapsToolStripMenuItem });
+            toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cfgFilesToolStripMenuItem, reloadOriginalPresetsToolStripMenuItem });
             toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             toolsToolStripMenuItem.Size = new Size(46, 20);
             toolsToolStripMenuItem.Text = "&Tools";
@@ -912,13 +899,6 @@ namespace DragDukeLauncher
             ExePathStatusLabel.Text = "EDuke32 Path:";
             ExePathStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
             ExePathStatusLabel.ToolTipText = "EDuke32 Path:";
-            // 
-            // importMapsToolStripMenuItem
-            // 
-            importMapsToolStripMenuItem.Name = "importMapsToolStripMenuItem";
-            importMapsToolStripMenuItem.Size = new Size(195, 22);
-            importMapsToolStripMenuItem.Text = "&Import Maps";
-            importMapsToolStripMenuItem.Click += importMapsToolStripMenuItem_Click;
             // 
             // MainWindow
             // 
@@ -1036,8 +1016,6 @@ namespace DragDukeLauncher
         private ToolStripStatusLabel CollisionsStatusLabel;
         private SpringLabel ExePathStatusLabel;
         private Label lbLoadSavePath;
-        private ToolStripMenuItem selectedFolderSubfoldersToolStripMenuItem;
-        private ToolStripMenuItem importMapsToolStripMenuItem;
     }
 }
 

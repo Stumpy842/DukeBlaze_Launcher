@@ -2,17 +2,17 @@
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-
+using DragDukeLauncher.Extensions;
 
 namespace DragDukeLauncher
 {
     public static class DescriptionManager
     {
-
-        private const string DescriptionFilePath = "LauncherData\\Description.dat";
-        private const string TextIfButtonHasDescription = "Description ✔";
-        private const string TextIfButtonHasNotDescription = "Description ✘";
-        private static List<DescriptionItem> DescriptionItems = new List<DescriptionItem>();
+        //        private const string DescriptionFilePath = "LauncherData\\Description.dat";
+        public const string DescriptionFilePath = $@"{Tools.ldFolder}\{Tools.dDesc}";
+        private const string TextIfButtonHasDescription = "&Description ✔";
+        private const string TextIfButtonHasNotDescription = "&Description ✘";
+        private static List<DescriptionItem> DescriptionItems = new();
 
         public static string LastDescriptionText { get; set; } = string.Empty;
 
@@ -30,12 +30,12 @@ namespace DragDukeLauncher
         public static bool IsDescriptionExist(int nodeId)
         {
             if (DescriptionItems.Count == 0) return false;
-            return DescriptionItems.Find(x => x.NodeId == nodeId) != null ? true : false;
+            return DescriptionItems.Find(x => x.NodeId == nodeId) != null;
         }
 
         public static string GetDescriptionByNodeId(int nodeId)
         {
-            if (IsDescriptionExist(nodeId) == false) return string.Empty;
+            if (!IsDescriptionExist(nodeId)) return string.Empty;
             return DescriptionItems.Find(x => x.NodeId == nodeId).Description;
         }
 
@@ -60,7 +60,7 @@ namespace DragDukeLauncher
 
         public static void Remove(int nodeId)
         {
-            List<DescriptionItem> newDescriptionItems = new List<DescriptionItem>();
+            List<DescriptionItem> newDescriptionItems = new();
             for(int i=0; i< DescriptionItems.Count; i++)
             {
                 if(DescriptionItems[i].NodeId != nodeId)
@@ -86,10 +86,10 @@ namespace DragDukeLauncher
 
         public static void LoadDescriptionFromFile()
         {
-            using (StreamReader fs = new StreamReader(DescriptionFile))
+            using (StreamReader fs = new(DescriptionFile))
             {
                 var newItems = JsonConvert.DeserializeObject<List<DescriptionItem>>(fs.ReadToEnd());
-                if(newItems!=null) DescriptionItems = newItems;
+                if(newItems is not null) DescriptionItems = newItems;
             }
         }
 

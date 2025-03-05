@@ -1,21 +1,21 @@
-using System;
+﻿using System;
 
 namespace DragDukeLauncher
 {
-    public static class AdditionalParameters
+    internal static class AdditionalParameters
     {
 
         private static MainWindow _mainWindow = null;
 
 
-        public static void Init(MainWindow mainWindow)
+        internal static void Init(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
         }
 
 
 
-        public static string GameDirectoryCommand
+        internal static string GameDirectoryCommand
         {
             get
             {
@@ -26,7 +26,7 @@ namespace DragDukeLauncher
             }
         }
 
-        public static string GameDirectory
+        internal static string GameDirectory
         {
             get
             {
@@ -41,7 +41,7 @@ namespace DragDukeLauncher
 
 
 
-        public static string ConfigPathCommand
+        internal static string ConfigPathCommand
         {
             get
             {
@@ -52,7 +52,7 @@ namespace DragDukeLauncher
             }
         }
 
-        public static string ConfigPath
+        internal static string ConfigPath
         {
             get
             {
@@ -67,12 +67,12 @@ namespace DragDukeLauncher
 
 
 
-        public static string SkillCommand
+        internal static string SkillCommand
         {
             get{ return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.s].CommandName}{_mainWindow.SkillLevelComboBox.SelectedIndex.ToString()} "; }
         }
 
-        public static int Skill
+        internal static int Skill
         {
             get { return _mainWindow.SkillLevelComboBox.SelectedIndex; }
             set { _mainWindow.SkillLevelComboBox.SelectedIndex = value; }
@@ -80,7 +80,7 @@ namespace DragDukeLauncher
 
 
 
-        public static string AddonCommand
+        internal static string AddonCommand
         {
             get
             {
@@ -89,7 +89,7 @@ namespace DragDukeLauncher
             }
         }
 
-        public static int Addon
+        internal static int Addon
         {
             get { return _mainWindow.AddonComboBox.SelectedIndex; }
             set { _mainWindow.AddonComboBox.SelectedIndex = value; }
@@ -97,7 +97,7 @@ namespace DragDukeLauncher
 
 
 
-        public static string RespawnModeCommand
+        internal static string RespawnModeCommand
         {
             get
             {
@@ -113,7 +113,7 @@ namespace DragDukeLauncher
             }
         }
 
-        public static int RespawnMode
+        internal static int RespawnMode
         {
             get { return _mainWindow.RespawnModeComboBox.SelectedIndex; }
             set { _mainWindow.RespawnModeComboBox.SelectedIndex = value; }
@@ -121,7 +121,7 @@ namespace DragDukeLauncher
 
 
 
-        public static string DisableStartupWindowCommand
+        internal static string DisableStartupWindowCommand
         {
             get
             {
@@ -130,7 +130,7 @@ namespace DragDukeLauncher
             }
         }
 
-        public static bool DisableStartupWindow
+        internal static bool DisableStartupWindow
         {
             get { return _mainWindow.DisableStartupWindowCheckbox.Checked; }
             set { _mainWindow.DisableStartupWindowCheckbox.Checked = value; }
@@ -138,7 +138,7 @@ namespace DragDukeLauncher
 
 
 
-        public static string DisableMonstersCommand
+        internal static string DisableMonstersCommand
         {
             get
             {
@@ -147,7 +147,7 @@ namespace DragDukeLauncher
             }
         }
 
-        public static bool DisableMonstersWindow
+        internal static bool DisableMonstersWindow
         {
             get { return _mainWindow.DisableMonstersCheckbox.Checked; }
             set { _mainWindow.DisableMonstersCheckbox.Checked = value; }
@@ -155,7 +155,7 @@ namespace DragDukeLauncher
 
 
 
-        public static string DisableStartupAnimationsAndLogosCommand
+        internal static string DisableStartupAnimationsAndLogosCommand
         {
             get
             {
@@ -164,7 +164,7 @@ namespace DragDukeLauncher
             }
         }
 
-        public static bool DisableStartupAnimationsAndLogos
+        internal static bool DisableStartupAnimationsAndLogos
         {
             get { return _mainWindow.SkipLogoCheckBox.Checked; }
             set { _mainWindow.SkipLogoCheckBox.Checked = value; }
@@ -172,7 +172,7 @@ namespace DragDukeLauncher
 
 
 
-        public static string CustomExe
+        internal static string CustomExe
         {
             get
             {
@@ -186,7 +186,7 @@ namespace DragDukeLauncher
         }
 
 
-        public static void SetDefaultParameters()
+        internal static void SetDefaultParameters()
         {
             _mainWindow.GameDirTextBox.Text = String.Empty;
             _mainWindow.CfgPathTextBox.Text = String.Empty;
@@ -199,7 +199,7 @@ namespace DragDukeLauncher
         }
 
 
-        public static string GetCommands()
+        internal static string GetCommands()
         {
             return GameDirectoryCommand +
                 ConfigPathCommand +

@@ -4,17 +4,17 @@ using System.Windows.Forms;
 
 namespace DragDukeLauncher
 {
-    public partial class DescriptionWindow : Form
+    internal partial class DescriptionWindow : Form
     {
 
         private MainWindow _mainWindow = null;
         private int selectedNodeId = -1;
 
-        public DescriptionWindow(MainWindow mainWindow)
+        internal DescriptionWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            selectedNodeId = int.Parse(_mainWindow.PresetTree.SelectedNode.Tag.ToString());
+            selectedNodeId = (int)_mainWindow.PresetTree.SelectedNode.Tag;
 
             if (selectedNodeId != -1)
             {
@@ -25,15 +25,26 @@ namespace DragDukeLauncher
 
         private void SavePresetButton_Click(object sender, EventArgs e)
         {
-                  
+
             if (selectedNodeId != -1)
             {
-                DescriptionManager.SaveDescriptionByNodeId(int.Parse(_mainWindow.PresetTree.SelectedNode.Tag.ToString()), PresetDescriptionTextBox.Text, _mainWindow.PresetTree.SelectedNode.Text.Contains(Tools.FolderIcon));
+                DescriptionManager.SaveDescriptionByNodeId((int)_mainWindow.PresetTree.SelectedNode.Tag,
+                    PresetDescriptionTextBox.Text, _mainWindow.PresetTree.SelectedNode.Text.StartsWith(Tools.FolderIcon));
             }
             _mainWindow.RefreshButtonDescription();
             PresetsManager.Save();
             _mainWindow.RecoverLastSelectedNode();
             this.Close();
+        }
+
+        private void DescriptionWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
+        }
+
+        private void CancelPresetButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

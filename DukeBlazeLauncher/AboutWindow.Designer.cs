@@ -18,122 +18,153 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutWindow));
-            this.label1 = new System.Windows.Forms.Label();
-            this.VersionLabel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.GitHubPageLink = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            label1 = new Label();
+            VersionLabel = new Label();
+            label5 = new Label();
+            GitHubPageLink = new Label();
+            label6 = new Label();
+            label3 = new Label();
+            label7 = new Label();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            label4 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(79, 117);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DukeBlaze Launcher";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.Location = new Point(92, 135);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(176, 20);
+            label1.TabIndex = 0;
+            label1.Text = "DukeBlaze Launcher";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // VersionLabel
             // 
-            this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Location = new System.Drawing.Point(131, 137);
-            this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(63, 13);
-            this.VersionLabel.TabIndex = 1;
-            this.VersionLabel.Text = "Version: 0.0";
+            VersionLabel.AutoSize = true;
+            VersionLabel.Location = new Point(153, 158);
+            VersionLabel.Margin = new Padding(4, 0, 4, 0);
+            VersionLabel.Name = "VersionLabel";
+            VersionLabel.Size = new Size(66, 15);
+            VersionLabel.TabIndex = 1;
+            VersionLabel.Text = "Version: 0.0";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(80, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = " Andrei Ivashentsev (dragzxnd, doom wads)";
+            label5.AutoSize = true;
+            label5.Location = new Point(93, 193);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(234, 15);
+            label5.TabIndex = 4;
+            label5.Text = "Andrei Ivashentsev (dragzxnd, doom wads)";
             // 
             // GitHubPageLink
             // 
-            this.GitHubPageLink.AutoSize = true;
-            this.GitHubPageLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GitHubPageLink.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.GitHubPageLink.Location = new System.Drawing.Point(84, 191);
-            this.GitHubPageLink.Name = "GitHubPageLink";
-            this.GitHubPageLink.Size = new System.Drawing.Size(210, 13);
-            this.GitHubPageLink.TabIndex = 6;
-            this.GitHubPageLink.Text = "github.com/dragxnd/DukeBlaze_Launcher";
-            this.GitHubPageLink.Click += new System.EventHandler(this.GitHubPage_Click);
+            GitHubPageLink.AutoSize = true;
+            GitHubPageLink.Cursor = Cursors.Hand;
+            GitHubPageLink.ForeColor = SystemColors.HotTrack;
+            GitHubPageLink.Location = new Point(93, 247);
+            GitHubPageLink.Margin = new Padding(4, 0, 4, 0);
+            GitHubPageLink.Name = "GitHubPageLink";
+            GitHubPageLink.Size = new Size(231, 15);
+            GitHubPageLink.TabIndex = 6;
+            GitHubPageLink.Text = "github.com/dragxnd/DukeBlaze_Launcher";
+            GitHubPageLink.Click += GitHubPage_Click;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 191);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Page:";
+            label6.AutoSize = true;
+            label6.Location = new Point(41, 247);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(36, 15);
+            label6.TabIndex = 5;
+            label6.Text = "Page:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(35, 167);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Author:";
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label3.Location = new Point(41, 193);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 13);
+            label3.TabIndex = 2;
+            label3.Text = "Author:";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 221);
-            this.label7.MaximumSize = new System.Drawing.Size(260, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(257, 39);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "DukeBlaze is a Launcher for eDuke32 that will allow you to easily run custom maps" +
-    " and modifications, and build your own collection.";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label7.AutoSize = true;
+            label7.Location = new Point(41, 282);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.MaximumSize = new Size(303, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(301, 45);
+            label7.TabIndex = 7;
+            label7.Text = "DukeBlaze is a Launcher for eDuke32 that will allow you to easily run custom maps and modifications, and build your own collection.";
+            label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(116, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 93);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImageLayout = ImageLayout.None;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(135, 14);
+            pictureBox1.Margin = new Padding(4, 3, 4, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(113, 107);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(41, 220);
+            label2.Name = "label2";
+            label2.Size = new Size(49, 15);
+            label2.TabIndex = 9;
+            label2.Text = "Fork by:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(93, 220);
+            label4.Name = "label4";
+            label4.Size = new Size(85, 15);
+            label4.TabIndex = 10;
+            label4.Text = "Steven J Stover";
             // 
             // AboutWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 285);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.GitHubPageLink);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.VersionLabel);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MaximumSize = new System.Drawing.Size(350, 324);
-            this.MinimumSize = new System.Drawing.Size(350, 324);
-            this.Name = "AboutWindow";
-            this.Text = "About";
-            this.Load += new System.EventHandler(this.AboutWindow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(390, 356);
+            Controls.Add(label4);
+            Controls.Add(label2);
+            Controls.Add(pictureBox1);
+            Controls.Add(label7);
+            Controls.Add(GitHubPageLink);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label3);
+            Controls.Add(VersionLabel);
+            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximumSize = new Size(406, 395);
+            MinimumSize = new Size(406, 395);
+            Name = "AboutWindow";
+            SizeGripStyle = SizeGripStyle.Hide;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "About";
+            KeyDown += AboutWindow_KeyDown;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -146,5 +177,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Label label2;
+        private Label label4;
     }
 }
