@@ -30,10 +30,11 @@ namespace DukeBlazeLauncher
             quick,
             nosteam,
             ns,
-            nm
+            nm,
+            noinst
         }
 
-        public static Dictionary<CommandNames, Command> AllCommands = new Dictionary<CommandNames, Command>()
+        public static readonly Dictionary<CommandNames, Command> AllCommands = new()
         {
             { CommandNames.gamegrp,  new Command("-gamegrp",  DukeFiles.GRP,                                         hasValue: true,      loadAsMain: true)           },
             { CommandNames.grp,      new Command("-grp",      DukeFiles.GRP,                                         hasValue: true)                                  },
@@ -41,7 +42,7 @@ namespace DukeBlazeLauncher
             { CommandNames.mx,       new Command("-mx",       DukeFiles.CON,                                         hasValue: true)                                  },
             { CommandNames.h,        new Command("-h",        DukeFiles.DEF,                                         hasValue: true,      loadAsMain: true)           },
             { CommandNames.mh,       new Command("-mh",       DukeFiles.DEF,                                         hasValue: true)                                  },
-            { CommandNames.g,        new Command("-g",        new List<DukeFiles>(){ DukeFiles.ZIP, DukeFiles.PK3 }, hasValue: true)                                  },
+            { CommandNames.g,        new Command("-g",        [DukeFiles.ZIP, DukeFiles.PK3],                        hasValue: true)                                  },
             { CommandNames.map,      new Command("-map",      DukeFiles.MAP,                                         hasValue: true)                                  },
             { CommandNames.game_dir, new Command("-game_dir", DukeFiles.none,                                        hasValue: true)                                  },
             { CommandNames.cfg,      new Command("-cfg",      DukeFiles.none,                                        hasValue: true)                                  },
@@ -55,6 +56,7 @@ namespace DukeBlazeLauncher
             { CommandNames.nosteam,  new Command("-nosteam",  DukeFiles.none,                                        hasValue: false)                                 },
             { CommandNames.ns,       new Command("-ns",       DukeFiles.none,                                        hasValue: false)                                 },
             { CommandNames.nm,       new Command("-nm",       DukeFiles.none,                                        hasValue: false)                                 },
+            { CommandNames.noinst,   new Command("-noinstancechecking", DukeFiles.none,                              hasValue: false)                                 }
         };
 
 
@@ -79,9 +81,9 @@ namespace DukeBlazeLauncher
     public class Command
     {
         public string CommandName { get; set; }
-        public List<DukeFiles> FileType { get; set; } = new List<DukeFiles>();
+        public List<DukeFiles> FileType { get; set; } = [];
         public bool HasValue { get; set; }
-        public List<string> FileTypes { get; set; } = new List<string>();
+        public List<string> FileTypes { get; set; } = [];
         public bool LoadAsMain { get; set; }
 
         public Command(string commandName, DukeFiles fileType, bool hasValue, bool loadAsMain = false)

@@ -57,6 +57,7 @@ namespace DukeBlazeLauncher
             DisableStartupWindowCheckbox = new CheckBox();
             DisableMonstersCheckbox = new CheckBox();
             SkipLogoCheckBox = new CheckBox();
+            DisableInstanceCheckbox = new CheckBox();
             label10 = new Label();
             CustomExeTextBox = new TextBox();
             CustomExeButton = new Button();
@@ -85,6 +86,7 @@ namespace DukeBlazeLauncher
             settingsToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
+            findToolStripMenuItem = new ToolStripMenuItem();
             removeAllpresetsToolStripMenuItem = new ToolStripMenuItem();
             sortToolStripMenuItem = new ToolStripMenuItem();
             entireTreeToolStripMenuItem = new ToolStripMenuItem();
@@ -104,7 +106,6 @@ namespace DukeBlazeLauncher
             TreeStatusLabel = new ToolStripStatusLabel();
             CollisionsStatusLabel = new ToolStripStatusLabel();
             ExePathStatusLabel = new SpringLabel();
-            findToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             LaunchOptionsGroup.SuspendLayout();
@@ -161,7 +162,7 @@ namespace DukeBlazeLauncher
             PresetTree.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
             PresetTree.Size = new Size(290, 546);
             PresetTree.TabIndex = 2;
-            toolTip1.SetToolTip(PresetTree, "Navigate with mouse or arrow keys\r\nDouble-click or Enter key to open Description\r\nRight-click for Drag Drop help");
+            toolTip1.SetToolTip(PresetTree, "Navigate with mouse or arrow keys\r\nDouble-click or Enter key to open Description\r\nRight-click item for Drag Drop help");
             PresetTree.DoubleClick += PresetTree_DoubleClick;
             PresetTree.Enter += PresetTree_Enter;
             PresetTree.KeyDown += PresetTree_KeyDown;
@@ -313,6 +314,7 @@ namespace DukeBlazeLauncher
             AdditionalSettingsPanel.Controls.Add(DisableStartupWindowCheckbox);
             AdditionalSettingsPanel.Controls.Add(DisableMonstersCheckbox);
             AdditionalSettingsPanel.Controls.Add(SkipLogoCheckBox);
+            AdditionalSettingsPanel.Controls.Add(DisableInstanceCheckbox);
             AdditionalSettingsPanel.Controls.Add(label10);
             AdditionalSettingsPanel.Controls.Add(CustomExeTextBox);
             AdditionalSettingsPanel.Controls.Add(CustomExeButton);
@@ -481,19 +483,33 @@ namespace DukeBlazeLauncher
             SkipLogoCheckBox.Text = "S&kip all the startup animations and logos (-nologo,-quick)";
             SkipLogoCheckBox.UseVisualStyleBackColor = true;
             // 
+            // DisableInstanceCheckbox
+            // 
+            DisableInstanceCheckbox.AutoSize = true;
+            DisableInstanceCheckbox.Checked = true;
+            DisableInstanceCheckbox.CheckState = CheckState.Checked;
+            DisableInstanceCheckbox.Location = new Point(12, 438);
+            DisableInstanceCheckbox.Margin = new Padding(12, 3, 4, 3);
+            DisableInstanceCheckbox.Name = "DisableInstanceCheckbox";
+            DisableInstanceCheckbox.Size = new Size(314, 19);
+            DisableInstanceCheckbox.TabIndex = 18;
+            DisableInstanceCheckbox.Text = "Disable eduke32 instance check (-noinstancechecking)";
+            toolTip1.SetToolTip(DisableInstanceCheckbox, "Prevents eduke32 from checking whether another instance is already running");
+            DisableInstanceCheckbox.UseVisualStyleBackColor = true;
+            // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(10, 452);
+            label10.Location = new Point(10, 477);
             label10.Margin = new Padding(10, 17, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(118, 15);
+            label10.Size = new Size(117, 15);
             label10.TabIndex = 15;
             label10.Text = "Custom eD&uke32 exe";
             // 
             // CustomExeTextBox
             // 
-            CustomExeTextBox.Location = new Point(12, 470);
+            CustomExeTextBox.Location = new Point(12, 495);
             CustomExeTextBox.Margin = new Padding(12, 3, 4, 3);
             CustomExeTextBox.Name = "CustomExeTextBox";
             CustomExeTextBox.Size = new Size(398, 23);
@@ -502,7 +518,7 @@ namespace DukeBlazeLauncher
             // 
             // CustomExeButton
             // 
-            CustomExeButton.Location = new Point(10, 496);
+            CustomExeButton.Location = new Point(10, 521);
             CustomExeButton.Margin = new Padding(10, 0, 4, 3);
             CustomExeButton.Name = "CustomExeButton";
             CustomExeButton.Size = new Size(88, 27);
@@ -738,28 +754,28 @@ namespace DukeBlazeLauncher
             // loadPresetsToolStripMenuItem
             // 
             loadPresetsToolStripMenuItem.Name = "loadPresetsToolStripMenuItem";
-            loadPresetsToolStripMenuItem.Size = new Size(180, 22);
+            loadPresetsToolStripMenuItem.Size = new Size(140, 22);
             loadPresetsToolStripMenuItem.Text = "&Load Presets";
             loadPresetsToolStripMenuItem.Click += loadPresetsToolStripMenuItem_Click;
             // 
             // savePresetsToolStripMenuItem
             // 
             savePresetsToolStripMenuItem.Name = "savePresetsToolStripMenuItem";
-            savePresetsToolStripMenuItem.Size = new Size(180, 22);
+            savePresetsToolStripMenuItem.Size = new Size(140, 22);
             savePresetsToolStripMenuItem.Text = "&Save Presets";
             savePresetsToolStripMenuItem.Click += savePresetsToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(180, 22);
+            settingsToolStripMenuItem.Size = new Size(140, 22);
             settingsToolStripMenuItem.Text = "S&ettings";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(140, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -770,10 +786,17 @@ namespace DukeBlazeLauncher
             editToolStripMenuItem.Size = new Size(39, 20);
             editToolStripMenuItem.Text = "&Edit";
             // 
+            // findToolStripMenuItem
+            // 
+            findToolStripMenuItem.Name = "findToolStripMenuItem";
+            findToolStripMenuItem.Size = new Size(165, 22);
+            findToolStripMenuItem.Text = "&Find";
+            findToolStripMenuItem.Click += findToolStripMenuItem_Click;
+            // 
             // removeAllpresetsToolStripMenuItem
             // 
             removeAllpresetsToolStripMenuItem.Name = "removeAllpresetsToolStripMenuItem";
-            removeAllpresetsToolStripMenuItem.Size = new Size(180, 22);
+            removeAllpresetsToolStripMenuItem.Size = new Size(165, 22);
             removeAllpresetsToolStripMenuItem.Text = "&Prune Preset Tree";
             removeAllpresetsToolStripMenuItem.Click += removeAllpresetsToolStripMenuItem_Click;
             // 
@@ -781,7 +804,7 @@ namespace DukeBlazeLauncher
             // 
             sortToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { entireTreeToolStripMenuItem, selectedNodeToolStripMenuItem, selectedFolderSubfoldersToolStripMenuItem });
             sortToolStripMenuItem.Name = "sortToolStripMenuItem";
-            sortToolStripMenuItem.Size = new Size(180, 22);
+            sortToolStripMenuItem.Size = new Size(165, 22);
             sortToolStripMenuItem.Text = "&Sort";
             // 
             // entireTreeToolStripMenuItem
@@ -822,28 +845,28 @@ namespace DukeBlazeLauncher
             // autoexeccfgToolStripMenuItem
             // 
             autoexeccfgToolStripMenuItem.Name = "autoexeccfgToolStripMenuItem";
-            autoexeccfgToolStripMenuItem.Size = new Size(142, 22);
+            autoexeccfgToolStripMenuItem.Size = new Size(141, 22);
             autoexeccfgToolStripMenuItem.Text = "autoexec.cfg";
             autoexeccfgToolStripMenuItem.Click += autoexeccfgToolStripMenuItem_Click;
             // 
             // eduke32cfgToolStripMenuItem
             // 
             eduke32cfgToolStripMenuItem.Name = "eduke32cfgToolStripMenuItem";
-            eduke32cfgToolStripMenuItem.Size = new Size(142, 22);
+            eduke32cfgToolStripMenuItem.Size = new Size(141, 22);
             eduke32cfgToolStripMenuItem.Text = "eduke32.cfg";
             eduke32cfgToolStripMenuItem.Click += eduke32cfgToolStripMenuItem_Click;
             // 
             // settingscfgToolStripMenuItem
             // 
             settingscfgToolStripMenuItem.Name = "settingscfgToolStripMenuItem";
-            settingscfgToolStripMenuItem.Size = new Size(142, 22);
+            settingscfgToolStripMenuItem.Size = new Size(141, 22);
             settingscfgToolStripMenuItem.Text = "settings.cfg";
             settingscfgToolStripMenuItem.Click += settingscfgToolStripMenuItem_Click;
             // 
             // eduke32logToolStripMenuItem
             // 
             eduke32logToolStripMenuItem.Name = "eduke32logToolStripMenuItem";
-            eduke32logToolStripMenuItem.Size = new Size(142, 22);
+            eduke32logToolStripMenuItem.Size = new Size(141, 22);
             eduke32logToolStripMenuItem.Text = "eduke32.log";
             eduke32logToolStripMenuItem.Click += eduke32logToolStripMenuItem_Click;
             // 
@@ -921,13 +944,6 @@ namespace DukeBlazeLauncher
             ExePathStatusLabel.Text = "EDuke32 Path:";
             ExePathStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
             ExePathStatusLabel.ToolTipText = "EDuke32 Path:";
-            // 
-            // findToolStripMenuItem
-            // 
-            findToolStripMenuItem.Name = "findToolStripMenuItem";
-            findToolStripMenuItem.Size = new Size(180, 22);
-            findToolStripMenuItem.Text = "&Find";
-            findToolStripMenuItem.Click += findToolStripMenuItem_Click;
             // 
             // MainWindow
             // 
@@ -1048,6 +1064,7 @@ namespace DukeBlazeLauncher
         private ToolStripMenuItem selectedFolderSubfoldersToolStripMenuItem;
         private ToolStripMenuItem importMapsToolStripMenuItem;
         private ToolStripMenuItem findToolStripMenuItem;
+        public CheckBox DisableInstanceCheckbox;
     }
 }
 

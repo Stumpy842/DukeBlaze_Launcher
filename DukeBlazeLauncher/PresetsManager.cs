@@ -133,7 +133,8 @@ namespace DukeBlazeLauncher
                 DisableMonsters = AdditionalParameters.DisableMonstersWindow,
                 DisableLogo = AdditionalParameters.DisableStartupAnimationsAndLogos,
                 AdditionalCommands = _mainWindow.AdditionalCommandsTextBox.Text,
-                CustomExePath = AdditionalParameters.CustomExe
+                CustomExePath = AdditionalParameters.CustomExe,
+                DisableInstance = AdditionalParameters.DisableInstanceCheck
             };
             return item;
         }
@@ -161,6 +162,7 @@ namespace DukeBlazeLauncher
                 AdditionalParameters.DisableStartupAnimationsAndLogos = item.DisableLogo;
                 _mainWindow.AdditionalCommandsTextBox.Text = item.AdditionalCommands;
                 AdditionalParameters.CustomExe = item.CustomExePath;
+                AdditionalParameters.DisableInstanceCheck = item.DisableInstance;
 
                 IsPresetSelected = true;
             }
@@ -221,7 +223,7 @@ namespace DukeBlazeLauncher
     public class PresetItem
     {
         public int NodeId { get; set; }
-        public List<UploadedFile> Files { get; set; } = new List<UploadedFile>();
+        public List<UploadedFile> Files { get; set; } = [];
         public string GameDirectoryPath { get; set; }
         public string ConfigPath { get; set; }
         public int SkillLevel { get; set; }
@@ -232,6 +234,7 @@ namespace DukeBlazeLauncher
         public bool DisableLogo { get; set; }
         public string AdditionalCommands { get; set; }
         public string CustomExePath { get; set; }
+        public bool DisableInstance {  get; set; }
     }
 
 }

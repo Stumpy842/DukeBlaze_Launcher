@@ -59,7 +59,7 @@
             label5.Location = new Point(93, 193);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(234, 15);
+            label5.Size = new Size(233, 15);
             label5.TabIndex = 4;
             label5.Text = "Andrei Ivashentsev (dragzxnd, doom wads)";
             // 
@@ -71,7 +71,7 @@
             GitHubPageLink.Location = new Point(93, 247);
             GitHubPageLink.Margin = new Padding(4, 0, 4, 0);
             GitHubPageLink.Name = "GitHubPageLink";
-            GitHubPageLink.Size = new Size(231, 15);
+            GitHubPageLink.Size = new Size(230, 15);
             GitHubPageLink.TabIndex = 6;
             GitHubPageLink.Text = "github.com/dragxnd/DukeBlaze_Launcher";
             GitHubPageLink.Click += GitHubPage_Click;
@@ -134,9 +134,9 @@
             label4.AutoSize = true;
             label4.Location = new Point(93, 220);
             label4.Name = "label4";
-            label4.Size = new Size(85, 15);
+            label4.Size = new Size(155, 15);
             label4.TabIndex = 10;
-            label4.Text = "Steven J Stover";
+            label4.Text = "Steven J Stover (Stumpy842)";
             // 
             // AboutWindow
             // 

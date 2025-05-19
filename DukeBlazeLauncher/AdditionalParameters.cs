@@ -69,7 +69,7 @@ namespace DukeBlazeLauncher
 
         internal static string SkillCommand
         {
-            get{ return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.s].CommandName}{_mainWindow.SkillLevelComboBox.SelectedIndex.ToString()} "; }
+            get { return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.s].CommandName}{_mainWindow.SkillLevelComboBox.SelectedIndex} "; }
         }
 
         internal static int Skill
@@ -170,7 +170,19 @@ namespace DukeBlazeLauncher
             set { _mainWindow.SkipLogoCheckBox.Checked = value; }
         }
 
+        internal static string DisableInstanceCheckCommand
+        {
+            get {
+                if (_mainWindow.DisableInstanceCheckbox.Checked) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.noinst].CommandName} ";
+                return String.Empty;
+            }
+        }
 
+        internal static bool DisableInstanceCheck
+        {
+            get { return _mainWindow.DisableInstanceCheckbox.Checked; }
+            set { _mainWindow.DisableInstanceCheckbox.Checked = value; }
+        }
 
         internal static string CustomExe
         {
@@ -196,6 +208,7 @@ namespace DukeBlazeLauncher
             _mainWindow.DisableStartupWindowCheckbox.Checked = true;
             _mainWindow.DisableMonstersCheckbox.Checked = false;
             _mainWindow.SkipLogoCheckBox.Checked = true;
+            _mainWindow.DisableInstanceCheckbox.Checked = true;
         }
 
 
@@ -208,7 +221,8 @@ namespace DukeBlazeLauncher
                 RespawnModeCommand +
                 DisableStartupWindowCommand +
                 DisableMonstersCommand +
-                DisableStartupAnimationsAndLogosCommand;
+                DisableStartupAnimationsAndLogosCommand +
+                DisableInstanceCheckCommand;
         }
 
     }

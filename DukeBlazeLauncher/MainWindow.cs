@@ -1704,7 +1704,7 @@ namespace DukeBlazeLauncher
                     MessageBox.Show("Use left mouse button to drag plus:\n\n" +
                     "Key\t\tAction\n----------------------------------------------\n" +
                     "None\t\tMove\nCtrl\t\tCopy\nShift\t\tMove all children\nShift+Ctrl\tCopy all children\n" +
-                    "Alt\t\tMove Preset only\nAlt+Ctrl\t\tCopy Preset only", "PresetTree Drag Drop Help");
+                    "Alt\t\tMove Presets only\nAlt+Ctrl\t\tCopy Presets only", "PresetTree Drag Drop Help");
             }
         }
 
@@ -1713,5 +1713,6 @@ namespace DukeBlazeLauncher
             using Finder finder = new(PresetTree) { KeyPreview = true };
             finder.ShowDialog(this);
         }
+
     }
 }
