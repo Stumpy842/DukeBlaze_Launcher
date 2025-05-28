@@ -15,8 +15,8 @@ namespace DukeBlazeLauncher
 {
     public partial class AboutWindow : Form
     {
-
         private const string PageLink = @"https://github.com/dragxnd/DukeBlaze_Launcher";
+        private const string ForkLink = @"https://github.com/Stumpy842/DukeBlaze_Launcher";
 
         public AboutWindow()
         {
@@ -29,14 +29,17 @@ namespace DukeBlazeLauncher
 
         private void GitHubPage_Click(object sender, EventArgs e)
         {
+            Label lbl = sender as Label;
+            string link = lbl.Name == "GitHubPageLink" ? PageLink : ForkLink;
             try
             {
-                using Process p = Process.Start(new ProcessStartInfo(PageLink) { UseShellExecute = true })!;
+                using Process p = Process.Start(new ProcessStartInfo(link) { UseShellExecute = true })!;
             }
             catch (Exception ex)
             {
                 //Debug.WriteLine($"***{ex}");
-                MessageBox.Show($@"Cannot open page {PageLink}" + $"\n{ex}", MainWindow.MyTitle,
+                using (new CenterWinDialog(this))
+                MessageBox.Show($@"Cannot open page {link}" + $"\n{ex}", MainWindow.MyTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

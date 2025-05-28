@@ -65,13 +65,14 @@ namespace DukeBlazeLauncher
             InitializeComponent();
             PresetTree.Sorted = false;
             ListFiles.Init(ListBoxFiles, this);
-            Run.Init(AdditionalCommandsTextBox);
+            Run.Init(this, AdditionalCommandsTextBox);
             AdditionalParameters.Init(this);
             MyTitle = Text;
         }
 
         TreeNode lastSelectedNode { get; set; } = null;
         TreeNode lastDraggedNode { get; set; } = null;
+        TreeNode lastExpandedNode { get; set; } = null;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -170,13 +171,13 @@ namespace DukeBlazeLauncher
             {
                 ExpandButton.Enabled = false;
                 TreeExpanded = false;
-                ExpandButton.Text = "Expand";
+                ExpandButton.Text = "E&xpand";
             }
             else
             {
                 ExpandButton.Enabled = true;
                 TreeExpanded = true;
-                ExpandButton.Text = "Collapse";
+                ExpandButton.Text = "&Collapse";
                 if (ExpandIt)
                 {
                     TreeExpanded = !optExpandTree;
@@ -276,6 +277,16 @@ namespace DukeBlazeLauncher
         internal void SaveLastDraggedNode()
         {
             lastDraggedNode = PresetTree.SelectedNode;
+        }
+
+        internal void RecoverLastExpandedNode()
+        {
+            PresetTree.SelectedNode = lastExpandedNode ?? PresetTree.Nodes[0];
+        }
+
+        internal void SaveLastExpandedNode()
+        {
+            lastExpandedNode = PresetTree.SelectedNode;
         }
 
         internal void SetDefaultParameters()
@@ -389,6 +400,7 @@ namespace DukeBlazeLauncher
             catch (Exception ex)
             {
                 //Debug.WriteLine($"***{ex}");
+                using (new CenterWinDialog(this))
                 MessageBox.Show($@"Cannot start {DukeWikiCommandsLink}" + $"\n{ex}", MyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -602,11 +614,18 @@ namespace DukeBlazeLauncher
             return nc;
         }
 
+        private TreeNode RootNode(TreeNode node)
+        {
+            if (node is null) { return PresetTree.TopNode; }
+            while (node.Parent is not null) { node = node.Parent; }
+            return node;
+        }
+
         private void EmptyButton_Click(object sender, EventArgs e)
         {
+            PresetTree.SelectedNode = RootNode(PresetTree.SelectedNode);
             SetDefaultParameters();
             ListFiles.Clear();
-            PresetTree.SelectedNode = PresetTree.TopNode;
         }
 
         // PRESET TREE
@@ -1599,8 +1618,9 @@ namespace DukeBlazeLauncher
         // Steve - 01/24/2025 22:37:47
         private void entireTreeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveLastSelectedNode();
             PresetTree.Sort();
-            PresetTree.SelectedNode = PresetTree.TopNode;
+            RecoverLastSelectedNode();
             PresetTree.Sorted = false;
         }
 
@@ -1608,8 +1628,9 @@ namespace DukeBlazeLauncher
         // Steve - 02/17/2025 12:10:25
         private void selectedNodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveLastSelectedNode();
             PresetTree.SelectedNode.Sort();
-            PresetTree.SelectedNode = PresetTree.TopNode;
+            RecoverLastSelectedNode();
             PresetTree.Sorted = false;
         }
 
@@ -1663,16 +1684,18 @@ namespace DukeBlazeLauncher
         {
             if (TreeExpanded)
             {
-                ExpandButton.Text = "Expand";
-                PresetTree.CollapseAll();
-                PresetTree.SelectedNode = PresetTree.TopNode;
+                ExpandButton.Text = "E&xpand";
+                SaveLastExpandedNode();
+                PresetTree.SelectedNode = RootNode(PresetTree.SelectedNode);
                 SaveLastSelectedNode();
+                PresetTree.CollapseAll();
+                RecoverLastSelectedNode();
             }
             else
             {
-                ExpandButton.Text = "Collapse";
+                ExpandButton.Text = "&Collapse";
                 PresetTree.ExpandAll();
-                RecoverLastSelectedNode();
+                RecoverLastExpandedNode();
             }
             TreeExpanded ^= true;
             PresetTree.Focus();

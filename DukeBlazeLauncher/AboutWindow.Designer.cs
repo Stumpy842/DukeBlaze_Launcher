@@ -28,6 +28,8 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label4 = new Label();
+            label8 = new Label();
+            GitForkPageLink = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -68,7 +70,7 @@
             GitHubPageLink.AutoSize = true;
             GitHubPageLink.Cursor = Cursors.Hand;
             GitHubPageLink.ForeColor = SystemColors.HotTrack;
-            GitHubPageLink.Location = new Point(93, 247);
+            GitHubPageLink.Location = new Point(93, 220);
             GitHubPageLink.Margin = new Padding(4, 0, 4, 0);
             GitHubPageLink.Name = "GitHubPageLink";
             GitHubPageLink.Size = new Size(230, 15);
@@ -79,7 +81,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(41, 247);
+            label6.Location = new Point(41, 220);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(36, 15);
@@ -100,7 +102,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(41, 282);
+            label7.Location = new Point(41, 309);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.MaximumSize = new Size(303, 0);
             label7.Name = "label7";
@@ -123,7 +125,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(41, 220);
+            label2.Location = new Point(41, 247);
             label2.Name = "label2";
             label2.Size = new Size(49, 15);
             label2.TabIndex = 9;
@@ -132,17 +134,40 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(93, 220);
+            label4.Location = new Point(93, 247);
             label4.Name = "label4";
             label4.Size = new Size(155, 15);
             label4.TabIndex = 10;
             label4.Text = "Steven J Stover (Stumpy842)";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(41, 274);
+            label8.Name = "label8";
+            label8.Size = new Size(36, 15);
+            label8.TabIndex = 11;
+            label8.Text = "Page:";
+            // 
+            // GitForkPageLink
+            // 
+            GitForkPageLink.AutoSize = true;
+            GitForkPageLink.Cursor = Cursors.Hand;
+            GitForkPageLink.ForeColor = SystemColors.HotTrack;
+            GitForkPageLink.Location = new Point(93, 274);
+            GitForkPageLink.Name = "GitForkPageLink";
+            GitForkPageLink.Size = new Size(246, 15);
+            GitForkPageLink.TabIndex = 12;
+            GitForkPageLink.Text = "github.com/Stumpy842/DukeBlaze_Launcher";
+            GitForkPageLink.Click += GitHubPage_Click;
+            // 
             // AboutWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(390, 356);
+            ClientSize = new Size(390, 383);
+            Controls.Add(GitForkPageLink);
+            Controls.Add(label8);
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
@@ -155,8 +180,8 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(4, 3, 4, 3);
-            MaximumSize = new Size(406, 395);
-            MinimumSize = new Size(406, 395);
+            MaximumSize = new Size(406, 422);
+            MinimumSize = new Size(406, 422);
             Name = "AboutWindow";
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterParent;
@@ -179,5 +204,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Label label2;
         private Label label4;
+        private Label label8;
+        private Label GitForkPageLink;
     }
 }

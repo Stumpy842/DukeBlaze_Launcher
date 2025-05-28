@@ -87,6 +87,24 @@ Located under the Edit menu, allows to search for name in Presets, Folders or bo
 Import maps window now accepts upper/mixed case file extensions
 Several cosmetic and code optimization changes
 
+
+********** New Version 0.5.2 Release **********
+
+**New feature: Disable eduke32 instance check**
+Prevents eduke32 from checking whether another instance is already running
+
+**Bug Fixes**
+Several cosmetic and code optimization changes
+
+
+********** New Version 0.5.3 Release **********
+
+Updated About window to add link to this fork on GitHub
+Minor changes to Hotkeys (Mnemonic keys)
+Better handling of Presets Tree focus after Collapse/Expand
+Fixed tab order for main window
+
+
 **Features which are currently not implemented**
 Language support
 Dark mode

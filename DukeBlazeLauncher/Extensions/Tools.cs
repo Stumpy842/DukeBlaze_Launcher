@@ -125,13 +125,13 @@ namespace DukeBlazeLauncher.Extensions
                             // Suffix in NOT integer, just add _Count
                             //Debug.WriteLine("***Suffix NOT an integer");
                             //Debug.WriteLine($"***Count: '{Count.ToString()}'");
-                            Name = $"{Name}_{Count.ToString()}";
+                            Name = $"{Name}_{Count}";
                         }
                     }
                     else
                     {
                         // No, _ char not found
-                        Name = $"{Name}_{Count.ToString()}";
+                        Name = $"{Name}_{Count}";
                         //Debug.WriteLine($"***No _ char found: '{Name}'");
                     }
                     done = false;

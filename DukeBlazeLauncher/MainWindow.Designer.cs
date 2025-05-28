@@ -24,9 +24,9 @@ namespace DukeBlazeLauncher
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            TreeNode treeNode1 = new TreeNode("📁 Expansions", 10, 10);
-            TreeNode treeNode2 = new TreeNode("📁 Episodes");
-            TreeNode treeNode3 = new TreeNode("📁 Maps");
+            TreeNode treeNode4 = new TreeNode("📁 Expansions", 10, 10);
+            TreeNode treeNode5 = new TreeNode("📁 Episodes");
+            TreeNode treeNode6 = new TreeNode("📁 Maps");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             groupBox1 = new GroupBox();
             ExpandButton = new Button();
@@ -138,7 +138,7 @@ namespace DukeBlazeLauncher
             ExpandButton.Name = "ExpandButton";
             ExpandButton.Size = new Size(140, 32);
             ExpandButton.TabIndex = 0;
-            ExpandButton.Text = "Expand";
+            ExpandButton.Text = "E&xpand";
             ExpandButton.UseVisualStyleBackColor = true;
             ExpandButton.Click += ExpandButton_Click;
             // 
@@ -148,18 +148,18 @@ namespace DukeBlazeLauncher
             PresetTree.Location = new Point(9, 61);
             PresetTree.Margin = new Padding(4, 3, 4, 3);
             PresetTree.Name = "PresetTree";
-            treeNode1.ImageIndex = 10;
-            treeNode1.Name = "Expansions";
-            treeNode1.SelectedImageIndex = 10;
-            treeNode1.Tag = "0";
-            treeNode1.Text = "📁 Expansions";
-            treeNode2.Name = "Episodes";
-            treeNode2.Tag = "1";
-            treeNode2.Text = "📁 Episodes";
-            treeNode3.Name = "Maps";
-            treeNode3.Tag = "2";
-            treeNode3.Text = "📁 Maps";
-            PresetTree.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
+            treeNode4.ImageIndex = 10;
+            treeNode4.Name = "Expansions";
+            treeNode4.SelectedImageIndex = 10;
+            treeNode4.Tag = "0";
+            treeNode4.Text = "📁 Expansions";
+            treeNode5.Name = "Episodes";
+            treeNode5.Tag = "1";
+            treeNode5.Text = "📁 Episodes";
+            treeNode6.Name = "Maps";
+            treeNode6.Tag = "2";
+            treeNode6.Text = "📁 Maps";
+            PresetTree.Nodes.AddRange(new TreeNode[] { treeNode4, treeNode5, treeNode6 });
             PresetTree.Size = new Size(290, 546);
             PresetTree.TabIndex = 2;
             toolTip1.SetToolTip(PresetTree, "Navigate with mouse or arrow keys\r\nDouble-click or Enter key to open Description\r\nRight-click item for Drag Drop help");
@@ -323,7 +323,7 @@ namespace DukeBlazeLauncher
             AdditionalSettingsPanel.Margin = new Padding(4, 3, 4, 3);
             AdditionalSettingsPanel.Name = "AdditionalSettingsPanel";
             AdditionalSettingsPanel.Size = new Size(442, 442);
-            AdditionalSettingsPanel.TabIndex = 8;
+            AdditionalSettingsPanel.TabIndex = 7;
             AdditionalSettingsPanel.WrapContents = false;
             // 
             // label3
@@ -414,7 +414,7 @@ namespace DukeBlazeLauncher
             label5.Name = "label5";
             label5.Size = new Size(93, 15);
             label5.TabIndex = 8;
-            label5.Text = "Addo&n (-addon)";
+            label5.Text = "Add&on (-addon)";
             // 
             // AddonComboBox
             // 
@@ -492,8 +492,8 @@ namespace DukeBlazeLauncher
             DisableInstanceCheckbox.Margin = new Padding(12, 3, 4, 3);
             DisableInstanceCheckbox.Name = "DisableInstanceCheckbox";
             DisableInstanceCheckbox.Size = new Size(314, 19);
-            DisableInstanceCheckbox.TabIndex = 18;
-            DisableInstanceCheckbox.Text = "Disable eduke32 instance check (-noinstancechecking)";
+            DisableInstanceCheckbox.TabIndex = 15;
+            DisableInstanceCheckbox.Text = "Disa&ble eduke32 instance check (-noinstancechecking)";
             toolTip1.SetToolTip(DisableInstanceCheckbox, "Prevents eduke32 from checking whether another instance is already running");
             DisableInstanceCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -504,7 +504,7 @@ namespace DukeBlazeLauncher
             label10.Margin = new Padding(10, 17, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(117, 15);
-            label10.TabIndex = 15;
+            label10.TabIndex = 16;
             label10.Text = "Custom eD&uke32 exe";
             // 
             // CustomExeTextBox
@@ -513,7 +513,7 @@ namespace DukeBlazeLauncher
             CustomExeTextBox.Margin = new Padding(12, 3, 4, 3);
             CustomExeTextBox.Name = "CustomExeTextBox";
             CustomExeTextBox.Size = new Size(398, 23);
-            CustomExeTextBox.TabIndex = 16;
+            CustomExeTextBox.TabIndex = 17;
             toolTip1.SetToolTip(CustomExeTextBox, "Run the mod for another Duke3D.exe file");
             // 
             // CustomExeButton
@@ -522,7 +522,7 @@ namespace DukeBlazeLauncher
             CustomExeButton.Margin = new Padding(10, 0, 4, 3);
             CustomExeButton.Name = "CustomExeButton";
             CustomExeButton.Size = new Size(88, 27);
-            CustomExeButton.TabIndex = 17;
+            CustomExeButton.TabIndex = 18;
             CustomExeButton.Text = "Browse";
             CustomExeButton.UseVisualStyleBackColor = true;
             CustomExeButton.Click += CustomExeButton_Click;
@@ -613,7 +613,7 @@ namespace DukeBlazeLauncher
             label1.Name = "label1";
             label1.Size = new Size(30, 15);
             label1.TabIndex = 0;
-            label1.Text = "Fi&les";
+            label1.Text = "Files";
             // 
             // RunButton
             // 
@@ -722,7 +722,7 @@ namespace DukeBlazeLauncher
             label2.Name = "label2";
             label2.Size = new Size(211, 15);
             label2.TabIndex = 0;
-            label2.Text = "Additional &Command-Line Arguments";
+            label2.Text = "Additional Command-&Line Arguments";
             // 
             // AdditionalCommandsTextBox
             // 
