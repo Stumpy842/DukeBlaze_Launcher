@@ -52,7 +52,7 @@ namespace DukeBlazeLauncher
             { CommandNames.nosetup,  new Command("-nosetup",  DukeFiles.none,                                        hasValue: false)                                 },
             { CommandNames.m,        new Command("-m",        DukeFiles.none,                                        hasValue: false)                                 },
             { CommandNames.nologo,   new Command("-nologo",   DukeFiles.none,                                        hasValue: false)                                 },
-            { CommandNames.quick,    new Command("-quick",    DukeFiles.none,                                        hasValue: false)                                 },
+//            { CommandNames.quick,    new Command("-quick",    DukeFiles.none,                                        hasValue: false)                                 },
             { CommandNames.nosteam,  new Command("-nosteam",  DukeFiles.none,                                        hasValue: false)                                 },
             { CommandNames.ns,       new Command("-ns",       DukeFiles.none,                                        hasValue: false)                                 },
             { CommandNames.nm,       new Command("-nm",       DukeFiles.none,                                        hasValue: false)                                 },

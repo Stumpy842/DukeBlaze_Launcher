@@ -12,14 +12,14 @@ namespace DukeBlazeLauncher
         private const string SettingsFilePath = $@"{Tools.ldFolder}\{Tools.dSet}";
         private static SettingsWindow _settingsWindow = null;
         public static SettingsData CurrentSettings { get; private set; } = new SettingsData();
-        private static string title = MainWindow.MyTitle;
+        private static readonly string title = MainWindow.MyTitle;
         private const string DefaultExePath = "eduke32.exe";
         public static string DefaultEditorPath { get; private set; } = "notepad.exe";
 
         // Default Custom Colors
-        public static int[] DefaultCustomColors = {6916092, 15195440, 16107657, 1836924,
+        public static readonly int[] DefaultCustomColors = [6916092, 15195440, 16107657, 1836924,
                 3758726, 10526880, 7526079, 7405793, 6945974, 241502, 2296476, 5130294,
-                3102017, 7324121, 14993507, 11730944};
+                3102017, 7324121, 14993507, 11730944];
 
         // Enum for Prevent Name Collisions
         public enum PC { Allow, Folder, Global}
@@ -64,6 +64,7 @@ namespace DukeBlazeLauncher
                 CurrentSettings.optConfirmOverWrite = _settingsWindow.cbConfirmOverWrite.Checked;
                 CurrentSettings.optConfirmDelete = _settingsWindow.cbConfirmDelete.Checked;
                 CurrentSettings.optUseNotepad = _settingsWindow.cbUseNotepad.Checked;
+                CurrentSettings.optAutoName = _settingsWindow.cbAutoName.Checked;
             }
 
             try
@@ -124,6 +125,7 @@ namespace DukeBlazeLauncher
                     _settingsWindow.cbConfirmOverWrite.Checked = CurrentSettings.optConfirmOverWrite;
                     _settingsWindow.cbConfirmDelete.Checked = CurrentSettings.optConfirmDelete;
                     _settingsWindow.cbUseNotepad.Checked = CurrentSettings.optUseNotepad;
+                    _settingsWindow.cbAutoName.Checked = CurrentSettings.optAutoName;
                 }
             }
         }
@@ -145,14 +147,15 @@ namespace DukeBlazeLauncher
             public bool optUseNotepad { get; set; } = false;
             public bool optImportSummary { get; set; } = false;
             public bool optClearAfterImport { get; set; } = false;
-            public int[] myCustomColors { get; set; } = {6916092, 15195440, 16107657, 1836924,
+            public int[] myCustomColors { get; set; } = [6916092, 15195440, 16107657, 1836924,
                 3758726, 10526880, 7526079, 7405793, 6945974, 241502, 2296476, 5130294,
-                3102017, 7324121, 14993507, 11730944};
+                3102017, 7324121, 14993507, 11730944];
             public Finder.Mode findMode { get; set; } = Finder.Mode.Normal;
             public Finder.Target findTarget { get; set; } = Finder.Target.Preset;
             public bool findMatchCase { get; set; } = false;
             public bool findBackward { get; set; } = false;
             public bool findWrap { get; set; } = false;
+            public bool optAutoName { get; set; } = false;
         }
     }
 }

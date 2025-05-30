@@ -159,7 +159,8 @@ namespace DukeBlazeLauncher
         {
             get
             {
-                if (_mainWindow.SkipLogoCheckBox.Checked) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.nologo].CommandName} {CommandsBase.AllCommands[CommandsBase.CommandNames.quick].CommandName} ";
+                //if (_mainWindow.SkipLogoCheckBox.Checked) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.nologo].CommandName} {CommandsBase.AllCommands[CommandsBase.CommandNames.quick].CommandName} ";
+                if (_mainWindow.SkipLogoCheckBox.Checked) return $"{CommandsBase.AllCommands[CommandsBase.CommandNames.nologo].CommandName} ";
                 return String.Empty;
             }
         }

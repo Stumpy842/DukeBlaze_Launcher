@@ -53,6 +53,7 @@
             rbFolderGlobal = new RadioButton();
             rbFolderParent = new RadioButton();
             rbFolderAll = new RadioButton();
+            cbAutoName = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -68,7 +69,7 @@
             label3.Location = new Point(16, 15);
             label3.Margin = new Padding(9, 12, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(99, 15);
+            label3.Size = new Size(98, 15);
             label3.TabIndex = 0;
             label3.Text = "Eduke32.exe path";
             // 
@@ -147,6 +148,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(cbAutoName);
             tabPage1.Controls.Add(cbConfirmDelete);
             tabPage1.Controls.Add(cbConfirmOverWrite);
             tabPage1.Controls.Add(cbExpandTree);
@@ -378,7 +380,7 @@
             rbPresetFolder.AutoSize = true;
             rbPresetFolder.Location = new Point(6, 45);
             rbPresetFolder.Name = "rbPresetFolder";
-            rbPresetFolder.Size = new Size(138, 19);
+            rbPresetFolder.Size = new Size(139, 19);
             rbPresetFolder.TabIndex = 1;
             rbPresetFolder.TabStop = true;
             rbPresetFolder.Text = "Prevent In This Folder";
@@ -439,6 +441,16 @@
             rbFolderAll.TabStop = true;
             rbFolderAll.Text = "Allow All";
             rbFolderAll.UseVisualStyleBackColor = true;
+            // 
+            // cbAutoName
+            // 
+            cbAutoName.AutoSize = true;
+            cbAutoName.Location = new Point(241, 204);
+            cbAutoName.Name = "cbAutoName";
+            cbAutoName.Size = new Size(122, 19);
+            cbAutoName.TabIndex = 10;
+            cbAutoName.Text = "Auto Name Preset";
+            cbAutoName.UseVisualStyleBackColor = true;
             // 
             // SettingsWindow
             // 
@@ -511,5 +523,6 @@
         private Button btDefaultCustomColors;
         internal CheckBox cbUseNotepad;
         private Button btTextEditorHelp;
+        internal CheckBox cbAutoName;
     }
 }

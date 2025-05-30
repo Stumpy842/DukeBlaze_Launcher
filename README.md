@@ -105,6 +105,18 @@ Better handling of Presets Tree focus after Collapse/Expand
 Fixed tab order for main window
 
 
+********** New Version 0.5.4 Release **********
+
+**New feature: Auto Name Preset**
+Option located in the Settings window General tab
+Automatically adds filename in Preset Name box when a file is added to the Files listbox and the Preset Name was empty
+Does not auto save, you still need to use the Save Preset button to save the changes
+
+**Bug Fixes**
+Removed redundant -quick parameter for option "Skip all the startup animations and logos"
+More code optimizations
+
+
 **Features which are currently not implemented**
 Language support
 Dark mode

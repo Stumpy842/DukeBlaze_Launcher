@@ -52,6 +52,7 @@ namespace DukeBlazeLauncher
         private bool optConfirmOverWrite;
         private bool optConfirmDelete;
         private bool optUseNotepad;
+        private bool optAutoNamePreset;
         private Settings.PC PreventPresetCollisions;
         private Settings.PC PreventFolderCollisions;
 
@@ -144,6 +145,7 @@ namespace DukeBlazeLauncher
             optExpandTree = Settings.CurrentSettings.optExpandTree;
             optConfirmOverWrite = Settings.CurrentSettings.optConfirmOverWrite;
             optConfirmDelete = Settings.CurrentSettings.optConfirmDelete;
+            optAutoNamePreset = Settings.CurrentSettings.optAutoName;
             optUseNotepad = Settings.CurrentSettings.optUseNotepad;
             notepadPath = Settings.CurrentSettings.notepadPath;
         }
@@ -354,6 +356,7 @@ namespace DukeBlazeLauncher
             }
             ListFiles.Refresh(true);
             RecoverLastSelectedNode();
+            AutoName(optAutoNamePreset);
         }
 
         private void ReplaceMainCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -1134,6 +1137,16 @@ namespace DukeBlazeLauncher
                 ListFiles.AddFile(filePath);
                 ListFiles.Refresh(true);
                 RecoverLastSelectedNode();
+                AutoName(optAutoNamePreset);
+            }
+        }
+
+        private void AutoName(bool autoName)
+        {
+            if (!autoName) return;
+            if ((ListBoxFiles.Items.Count > 0) && (PresetNameTextBox.Text == ""))
+            {
+                PresetNameTextBox.Text = ListBoxFiles.Items[0].ToString().Split('.')[0];
             }
         }
 

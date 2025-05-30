@@ -24,9 +24,9 @@ namespace DukeBlazeLauncher
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            TreeNode treeNode4 = new TreeNode("📁 Expansions", 10, 10);
-            TreeNode treeNode5 = new TreeNode("📁 Episodes");
-            TreeNode treeNode6 = new TreeNode("📁 Maps");
+            TreeNode treeNode1 = new TreeNode("📁 Expansions", 10, 10);
+            TreeNode treeNode2 = new TreeNode("📁 Episodes");
+            TreeNode treeNode3 = new TreeNode("📁 Maps");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             groupBox1 = new GroupBox();
             ExpandButton = new Button();
@@ -148,18 +148,18 @@ namespace DukeBlazeLauncher
             PresetTree.Location = new Point(9, 61);
             PresetTree.Margin = new Padding(4, 3, 4, 3);
             PresetTree.Name = "PresetTree";
-            treeNode4.ImageIndex = 10;
-            treeNode4.Name = "Expansions";
-            treeNode4.SelectedImageIndex = 10;
-            treeNode4.Tag = "0";
-            treeNode4.Text = "📁 Expansions";
-            treeNode5.Name = "Episodes";
-            treeNode5.Tag = "1";
-            treeNode5.Text = "📁 Episodes";
-            treeNode6.Name = "Maps";
-            treeNode6.Tag = "2";
-            treeNode6.Text = "📁 Maps";
-            PresetTree.Nodes.AddRange(new TreeNode[] { treeNode4, treeNode5, treeNode6 });
+            treeNode1.ImageIndex = 10;
+            treeNode1.Name = "Expansions";
+            treeNode1.SelectedImageIndex = 10;
+            treeNode1.Tag = "0";
+            treeNode1.Text = "📁 Expansions";
+            treeNode2.Name = "Episodes";
+            treeNode2.Tag = "1";
+            treeNode2.Text = "📁 Episodes";
+            treeNode3.Name = "Maps";
+            treeNode3.Tag = "2";
+            treeNode3.Text = "📁 Maps";
+            PresetTree.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
             PresetTree.Size = new Size(290, 546);
             PresetTree.TabIndex = 2;
             toolTip1.SetToolTip(PresetTree, "Navigate with mouse or arrow keys\r\nDouble-click or Enter key to open Description\r\nRight-click item for Drag Drop help");
@@ -478,9 +478,9 @@ namespace DukeBlazeLauncher
             SkipLogoCheckBox.Location = new Point(12, 413);
             SkipLogoCheckBox.Margin = new Padding(12, 3, 4, 3);
             SkipLogoCheckBox.Name = "SkipLogoCheckBox";
-            SkipLogoCheckBox.Size = new Size(331, 19);
+            SkipLogoCheckBox.Size = new Size(294, 19);
             SkipLogoCheckBox.TabIndex = 14;
-            SkipLogoCheckBox.Text = "S&kip all the startup animations and logos (-nologo,-quick)";
+            SkipLogoCheckBox.Text = "S&kip all the startup animations and logos (-nologo)";
             SkipLogoCheckBox.UseVisualStyleBackColor = true;
             // 
             // DisableInstanceCheckbox
