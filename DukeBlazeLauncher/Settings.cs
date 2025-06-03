@@ -100,7 +100,10 @@ namespace DukeBlazeLauncher
             }
             finally
             {
-                if (newItems is not null) { CurrentSettings = newItems; }
+                if (newItems is not null)
+                {
+                    CurrentSettings = newItems;
+                }
                 else
                 {
                     if (_settingsWindow is not null)
@@ -108,6 +111,7 @@ namespace DukeBlazeLauncher
                         Tools.TimedMessage("Error loading settings, using defaults.", $"{title} - File Load Error"); 
                     }
                 }
+
                 if (_settingsWindow is not null)
                 {
                     _settingsWindow.ExePathTextBox.Text = CurrentSettings.ExePath;
@@ -156,6 +160,7 @@ namespace DukeBlazeLauncher
             public bool findBackward { get; set; } = false;
             public bool findWrap { get; set; } = false;
             public bool optAutoName { get; set; } = false;
+            public int savedNodeId { get; set; } = 0;
         }
     }
 }

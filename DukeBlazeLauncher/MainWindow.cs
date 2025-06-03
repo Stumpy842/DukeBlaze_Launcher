@@ -55,6 +55,7 @@ namespace DukeBlazeLauncher
         private bool optAutoNamePreset;
         private Settings.PC PreventPresetCollisions;
         private Settings.PC PreventFolderCollisions;
+        private int savedId;
 
         // The screenOffset is used to account for any desktop bands 
         // that may be at the top or left side of the screen when 
@@ -148,6 +149,7 @@ namespace DukeBlazeLauncher
             optAutoNamePreset = Settings.CurrentSettings.optAutoName;
             optUseNotepad = Settings.CurrentSettings.optUseNotepad;
             notepadPath = Settings.CurrentSettings.notepadPath;
+            savedId = Settings.CurrentSettings.savedNodeId;
         }
 
         private void ResetAll()
@@ -160,10 +162,10 @@ namespace DukeBlazeLauncher
             PresetsManager.Init(PresetTree, this);
             PresetsManager.Load();
             PresetTree.EndUpdate();
-            PresetTree.SelectedNode = PresetTree.TopNode;
+            CheckExpand(true);
+            PresetTree.SelectedNode = PresetsManager.GetPresetByNodeId(savedId) ?? PresetTree.TopNode;
             SaveLastSelectedNode();
             RefreshButtonDescription();
-            CheckExpand(true);
             UpdateStatusStrip();
         }
 
@@ -404,7 +406,7 @@ namespace DukeBlazeLauncher
             {
                 //Debug.WriteLine($"***{ex}");
                 using (new CenterWinDialog(this))
-                MessageBox.Show($@"Cannot start {DukeWikiCommandsLink}" + $"\n{ex}", MyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($@"Cannot start {DukeWikiCommandsLink}" + $"\n{ex}", MyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1750,5 +1752,13 @@ namespace DukeBlazeLauncher
             finder.ShowDialog(this);
         }
 
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (PresetTree.SelectedNode is not null)
+            {
+                Settings.CurrentSettings.savedNodeId = (int)PresetTree.SelectedNode.Tag;
+                Settings.Save(false);
+            }
+        }
     }
 }

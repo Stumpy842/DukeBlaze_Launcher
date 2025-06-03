@@ -965,6 +965,7 @@ namespace DukeBlazeLauncher
             Name = "MainWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DukeBlaze Launcher";
+            FormClosing += MainWindow_FormClosing;
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);

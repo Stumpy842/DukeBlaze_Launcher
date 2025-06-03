@@ -117,6 +117,16 @@ Removed redundant -quick parameter for option "Skip all the startup animations a
 More code optimizations
 
 
+********** New Version 0.5.5 Release **********
+
+**New Feature: Remember last Preset on program relaunch**
+The selected Preset from the last program run will be selected on startup
+
+**Bug Fixes**
+Corrected a bug in previously unused code
+More code optimizations
+
+
 **Features which are currently not implemented**
 Language support
 Dark mode

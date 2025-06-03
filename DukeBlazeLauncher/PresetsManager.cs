@@ -92,31 +92,14 @@ namespace DukeBlazeLauncher
             DescriptionManager.LoadDescriptionFromFile();
         }
 
-
-
-        public static bool IsPresetExist(int nodeId)
-        {
-            bool exist = false;
-            var allNodes = TreeViewTools.Collect(_presetTree.Nodes);
-            foreach (var node in allNodes)
-            {
-                if ((int)node.Tag == nodeId) return exist;
-            }
-            return exist;
-        }
-
-
         public static TreeNode GetPresetByNodeId(int nodeId)
         {
-            if (!IsPresetExist(nodeId)) return null;
-            var allNodes = TreeViewTools.Collect(_presetTree.Nodes);
-            foreach (var node in allNodes)
+            foreach (TreeNode node in TreeViewTools.Collect(_presetTree.Nodes))
             {
                 if ((int)node.Tag == nodeId) return node;
             }
             return null;
         }
-
 
         public static PresetItem GetCurrentPresetSettings()
         {
@@ -138,7 +121,6 @@ namespace DukeBlazeLauncher
             };
             return item;
         }
-
 
         public static void SetCurrentPresetSettings()
         {
@@ -167,7 +149,6 @@ namespace DukeBlazeLauncher
                 IsPresetSelected = true;
             }
         }
-
 
         public static void AddCurrentPresetSettings()
         {
@@ -201,14 +182,12 @@ namespace DukeBlazeLauncher
             SavePresetSettingsToFile();
         }
 
-
         private static void SavePresetSettingsToFile()
         {
             if (!File.Exists(PresetsSettingsSavePath)) File.WriteAllText(PresetsSettingsSavePath, String.Empty);
             string savedText = JsonConvert.SerializeObject(PresetSettings);
             File.WriteAllText(PresetsSettingsSavePath, savedText);
         }
-
 
         private static void LoadPresetSettingsFromFile()
         {
