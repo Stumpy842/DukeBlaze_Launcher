@@ -12,6 +12,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics.Eventing.Reader;
 
 namespace DukeBlazeLauncher
 {
@@ -1637,6 +1638,7 @@ namespace DukeBlazeLauncher
             PresetTree.Sort();
             RecoverLastSelectedNode();
             PresetTree.Sorted = false;
+            PresetsManager.Save();
         }
 
         // Sort selected Node alphanumerically
@@ -1647,6 +1649,7 @@ namespace DukeBlazeLauncher
             PresetTree.SelectedNode.Sort();
             RecoverLastSelectedNode();
             PresetTree.Sorted = false;
+            PresetsManager.Save();
         }
 
         // Sort selected Node and child nodes alphanumerically
@@ -1759,6 +1762,29 @@ namespace DukeBlazeLauncher
                 Settings.CurrentSettings.savedNodeId = (int)PresetTree.SelectedNode.Tag;
                 Settings.Save(false);
             }
+        }
+
+        private void openGameDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string folderPath;
+            if (GameDirTextBox.Text.Contains(@":\"))
+            {
+                folderPath = GameDirTextBox.Text; }
+            else
+            {
+                folderPath = AppDomain.CurrentDomain.BaseDirectory;
+            }
+
+            try
+            {
+                Process.Start(new ProcessStartInfo(folderPath) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                Tools.ShowTaskDlg(this, MyTitle, "Error opening Game Directory", folderPath,
+                    $"Check that the path '{folderPath}' is valid\n\n{ex.Message}", null, -1, TaskDialogIcon.Error);
+            }
+            
         }
     }
 }

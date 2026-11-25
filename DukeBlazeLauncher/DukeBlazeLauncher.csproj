@@ -17,11 +17,11 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <Version>0.5.5</Version>
-    <VersionPrefix>0.5.5</VersionPrefix>
-    <AssemblyVersion>0.5.5</AssemblyVersion>
-    <FileVersion>0.5.5.0</FileVersion>
-    <InformationalVersion>0.5.5</InformationalVersion>
+    <Version>0.5.7</Version>
+    <VersionPrefix>0.5.7</VersionPrefix>
+    <AssemblyVersion>0.5.7</AssemblyVersion>
+    <FileVersion>0.5.7.0</FileVersion>
+    <InformationalVersion>0.5.7</InformationalVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>

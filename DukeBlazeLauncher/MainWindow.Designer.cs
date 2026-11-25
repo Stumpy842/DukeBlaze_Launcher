@@ -106,6 +106,7 @@ namespace DukeBlazeLauncher
             TreeStatusLabel = new ToolStripStatusLabel();
             CollisionsStatusLabel = new ToolStripStatusLabel();
             ExePathStatusLabel = new SpringLabel();
+            openGameDirectoryToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             LaunchOptionsGroup.SuspendLayout();
@@ -830,7 +831,7 @@ namespace DukeBlazeLauncher
             // 
             // toolsToolStripMenuItem
             // 
-            toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cfgFilesToolStripMenuItem, reloadOriginalPresetsToolStripMenuItem, importMapsToolStripMenuItem });
+            toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cfgFilesToolStripMenuItem, reloadOriginalPresetsToolStripMenuItem, importMapsToolStripMenuItem, openGameDirectoryToolStripMenuItem });
             toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             toolsToolStripMenuItem.Size = new Size(47, 20);
             toolsToolStripMenuItem.Text = "&Tools";
@@ -944,6 +945,13 @@ namespace DukeBlazeLauncher
             ExePathStatusLabel.Text = "EDuke32 Path:";
             ExePathStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
             ExePathStatusLabel.ToolTipText = "EDuke32 Path:";
+            // 
+            // openGameDirectoryToolStripMenuItem
+            // 
+            openGameDirectoryToolStripMenuItem.Name = "openGameDirectoryToolStripMenuItem";
+            openGameDirectoryToolStripMenuItem.Size = new Size(195, 22);
+            openGameDirectoryToolStripMenuItem.Text = "&Open Game Directory";
+            openGameDirectoryToolStripMenuItem.Click += openGameDirectoryToolStripMenuItem_Click;
             // 
             // MainWindow
             // 
@@ -1066,6 +1074,7 @@ namespace DukeBlazeLauncher
         private ToolStripMenuItem importMapsToolStripMenuItem;
         private ToolStripMenuItem findToolStripMenuItem;
         public CheckBox DisableInstanceCheckbox;
+        private ToolStripMenuItem openGameDirectoryToolStripMenuItem;
     }
 }
 
